@@ -66,7 +66,9 @@ function getAndDisplaySuggestedVentures() {
     getSuggestedVentures(displaySuggestedVentures);
 };
 
-getAndDisplaySuggestedVentures();
+$(function () {
+    getAndDisplaySuggestedVentures();
+});
 
 if (require.main === module) {
     app.listen(process.env.PORT || 8080, function () {
