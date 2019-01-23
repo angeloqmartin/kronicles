@@ -56,7 +56,7 @@ function getSuggestedVentures(ventures){
 
 // function stays same when dealing with real API
 function displaySuggestedVentures(data){
-    for (index in data.suggestedVentures) {
+    for (let index in data.suggestedVentures) {
         $('body').append('<p>' + data.suggestedVentures[index].text + '<p>');
     }
 };
