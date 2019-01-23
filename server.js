@@ -56,7 +56,7 @@ function getSuggestedVentures(ventures){
 
 // function stays same when dealing with real API
 function displaySuggestedVentures(data){
-    for(index in data.suggestedVentures) {
+    for (index in data.suggestedVentures) {
         $('body').append('<p>' + data.suggestedVentures[index].text + '<p>');
     }
 };
@@ -66,9 +66,8 @@ function getAndDisplaySuggestedVentures() {
     getSuggestedVentures(displaySuggestedVentures);
 };
 
-$(function () {
-    getAndDisplaySuggestedVentures();
-});
+// on page load function should run
+getAndDisplaySuggestedVentures();
 
 if (require.main === module) {
     app.listen(process.env.PORT || 8080, function () {
