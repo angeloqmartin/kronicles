@@ -16,12 +16,13 @@
                 <legend>Search for things to do in your area</legend>
                 <label for="location">Zip Code</label>
                 <input role="searchbox" type="text" id="location" pattern="[0-9]{5}" aria-placeholder="90210" title="Five digit zip code" required><br>
-                <select role="listbox" name="category" aria-placeholder="outdoors">
+                <label for="categories">Categories</label>
+                <select role="listbox" name="categories" id="categories" aria-placeholder="outdoors">
                     <option value="outdoors">outdoors</option>
                     <option value="indoors">indoors</option>
                 </select>
+                <button type="submit" role="button">search</button>
             </fieldset>
-            <button type="submit" role="button">search</button>
         </form>
         <h2>Suggestions:</h2>
         <div class="tripReport-container" id="js-tripReport-container"></div>
