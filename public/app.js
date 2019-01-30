@@ -50,9 +50,10 @@ function getSuggestedVentures(ventures){
 // function stays same when dealing with real API
 function displaySuggestedVentures(data){
     for (let index in data.suggestedVentures) {
-        $('body').append(
-            '<p>' + data.suggestedVentures[index].text + '</p>');
-    }
+        $("#js-tripReport-container").append(
+        `<div class="tripReport"><p>${data.suggestedVentures[index].text}</p></div>`
+        )
+    };
 };
 
 // function stays same when dealing with real API

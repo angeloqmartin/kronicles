@@ -11,20 +11,21 @@
         <h1>kronicles</h1>
     </header>
     <main role="main">
-        <form action="#">
+        <form role="form" action="#">
             <fieldset>
                 <legend>Search for things to do in your area</legend>
                 <label for="location">Zip Code</label>
-                <input type="text" id="location" pattern="[0-9]{5}" title="Five digit zip code">
-                <select>
+                <input role="searchbox" type="text" id="location" pattern="[0-9]{5}" title="Five digit zip code" required>
+                <select role="listbox" name="category">
                     <option value="outdoors"></option>
                     <option value="indoors"></option>
                 </select>
             </fieldset>
-            <button>search</button>
+            <button type="submit" role="button">search</button>
         </form>
         <h2>Suggestions:</h2>
-        <button>POST</button>
+        <div class="tripReport-container" id="js-tripReport-container"></div>
+        <button name="post" type="button">POST</button>
     </main>
     <footer>&copy; Angelo Martin 2019</footer>
     <!-- js script links -->
