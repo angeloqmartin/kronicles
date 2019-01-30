@@ -7,8 +7,27 @@
     <title>kronicles</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-
+    <header role="heading">
+        <h1>kronicles</h1>
+    </header>
+    <main role="main">
+        <form action="#">
+            <fieldset>
+                <legend>Search for things to do in your area</legend>
+                <label for="location">Zip Code</label>
+                <input type="text" id="location" pattern="[0-9]{5}" title="Five digit zip code">
+                <select>
+                    <option value="outdoors"></option>
+                    <option value="indoors"></option>
+                </select>
+            </fieldset>
+            <button>search</button>
+        </form>
+        <h2>Suggestions:</h2>
+        <button>POST</button>
+    </main>
+    <footer>&copy; Angelo Martin 2019</footer>
+    <!-- js script links -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
