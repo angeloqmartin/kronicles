@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>kronicles</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header role="heading">
@@ -14,13 +16,14 @@
         <form role="form" action="#">
             <fieldset>
                 <legend>Search for things to do in your area</legend>
-                <label for="location">Zip Code</label>
-                <input role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required><br>
-                <label for="categories">Categories</label>
+                <label for="categories">Category:</label>
                 <select name="categories" id="categories">
                     <option value="outdoors">outdoors</option>
                     <option value="indoors">indoors</option>
+                    <option value="food">food</option>
                 </select>
+                <label for="location">Zip Code:</label>
+                <input role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required>
                 <button type="submit" role="button">search</button>
             </fieldset>
         </form>
