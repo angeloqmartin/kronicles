@@ -18,13 +18,13 @@
             <fieldset>
                 <legend>Search for things to do in your area</legend>
                 <label for="categories">Category:</label>
-                <select name="categories" id="categories">
+                <select class="search-field" name="categories" id="categories">
                     <option value="outdoors">outdoors</option>
                     <option value="indoors">indoors</option>
                     <option value="food">food</option>
                 </select><br>
                 <label for="location">Zip Code:</label>
-                <input role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required>
+                <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required>
                 <button type="submit" role="button">search</button>
             </fieldset>
         </form>
