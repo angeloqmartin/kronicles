@@ -23,6 +23,13 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 /* ----------------------------------------------------------------- */
+legend {
+    text-align: center;
+}
+.search-field{
+    border: black;
+}
+/* ----------------------------------------------------------------- */
 .trip-suggestions{
     margin: 0;
     display: block;
