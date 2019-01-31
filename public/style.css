@@ -16,8 +16,6 @@ header {
 }
 h1 {
     margin: 10px;
-    font-weight: bolder;
     font-weight: 900;
-    display: block;
     font-family: 'Roboto', sans-serif;
 }
