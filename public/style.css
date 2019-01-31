@@ -1,11 +1,7 @@
 header {
     background-color: #FAFAFA;
-}
-h1 {
-    display: block;
-    margin: 0;
-    align-content: center;
-    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 .mirror {
     font-family: 'Londrina Outline', sans-serif;
@@ -16,4 +12,10 @@ h1 {
     -webkit-transform: scaleX(-1); /* Safari */
     filter: FlipH; /* IE 6-7-8 */
     -ms-filter: "FlipH"; /* IE */
+}
+h1 {
+    font-weight: 900;
+    display: block;
+    align-content: center;
+    font-family: 'Roboto', sans-serif;
 }
