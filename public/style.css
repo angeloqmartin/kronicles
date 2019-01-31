@@ -33,14 +33,16 @@ h1 {
 .post-btn {
     background-color: #278BFF;
     color: #FFFFFF;
+    font-size: 10px;
+    width: 60px;
+    height: 20px;
     font-weight: 600;
-    padding: 10px;
     border: none;
     border-radius: 12px;
     /* positions btn in btm left */
     position: fixed;
-    bottom: 25px;
-    right: 15px;
+    bottom: 20px;
+    right: 3px;
 }
 /* ----------------------------------------------------------------- */
 
