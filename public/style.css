@@ -27,7 +27,7 @@ legend {
     text-align: center;
 }
 .search-field{
-    border: black;
+    border: black solid 1px;
 }
 /* ----------------------------------------------------------------- */
 .trip-suggestions{
