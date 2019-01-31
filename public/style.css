@@ -1,10 +1,11 @@
+/* ----------------------------------------------------------------- */
 header {
     margin-bottom: 5%;
     background-color: #FAFAFA;
     display: flex;
     justify-content: center;
 }
-.mirror {
+.mirror { 
     font-family: 'Londrina Outline', sans-serif;
     color: #FF2D00;
     font-size: 1.5em;
@@ -22,7 +23,23 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 /* ----------------------------------------------------------------- */
+.trip-suggestions{
+    margin: 0;
+    display: block;
+    text-align: center;
+    color: #EFEFEF;
+}
+/* ----------------------------------------------------------------- */
+.post-btn {
+    background-color: #278BFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+}
+/* ----------------------------------------------------------------- */
 
+
+/* ----------------------------------------------------------------- */
 footer {
     display: block;
     position: fixed;
