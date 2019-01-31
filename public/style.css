@@ -31,7 +31,9 @@ legend {
     border: black solid 1px;
     margin: 5px 0;
 }
+/* ----------------------------------------------------------------- */
 .search-btn {
+    text-decoration: none;
     border-radius: 100%;
     background-color: #278BFF;
 }
@@ -45,11 +47,13 @@ i {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
   }
+.dir:hover {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+/* ----------------------------------------------------------------- */
 
-/* .right {
-transform: rotate(-45deg);
--webkit-transform: rotate(-45deg);
-} */
+
 /* ----------------------------------------------------------------- */
 .trip-suggestions{
     margin: 0;
