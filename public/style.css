@@ -26,8 +26,13 @@ h1 {
 legend {
     text-align: center;
 }
-.search-field{
+.search-field {
+    width: 40%;
     border: black solid 1px;
+    margin: 5px 0;
+}
+.search-btn {
+
 }
 /* ----------------------------------------------------------------- */
 .trip-suggestions{

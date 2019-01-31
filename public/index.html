@@ -17,15 +17,16 @@
         <form role="form" action="#">
             <fieldset>
                 <legend>Search for things to do in your area</legend>
-                <label for="categories">Category:</label>
+                <label for="categories">category:</label>
                 <select class="search-field" name="categories" id="categories">
+                    <option value="all">all</option>
                     <option value="outdoors">outdoors</option>
                     <option value="indoors">indoors</option>
                     <option value="food">food</option>
                 </select><br>
-                <label for="location">Zip Code:</label>
+                <label for="location">location:</label>
                 <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required>
-                <button type="submit" role="button">search</button>
+                <button class="search-btn" type="submit" role="button">search</button>
             </fieldset>
         </form>
         <h2 class="trip-suggestions">suggestions:</h2>
