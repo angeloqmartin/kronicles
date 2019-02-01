@@ -23,10 +23,10 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 /* ----------------------------------------------------------------- */
-fieldset {
+.seach-trip-report fieldset {
     margin-bottom: 20px;
 }
-legend {
+.seach-trip-report legend {
     text-align: center;
 }
 .search-field {
