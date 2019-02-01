@@ -1,15 +1,16 @@
 "use strict";
 
 const express = require('express');
-const nodemon = require('nodemon')
 const app = express();
 
 app.use(express.static('public'));
+
 
 if (require.main === module) {
     app.listen(process.env.PORT || 8080, function () {
         console.log(`listening on ${this.address().port}...`)
     });
 };
+
 
 module.exports = app;

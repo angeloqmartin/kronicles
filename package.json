@@ -7,6 +7,7 @@
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
     "mocha": "^5.2.0",
+    "mongoose": "^5.4.8",
     "nodemon": "^1.18.9"
   },
   "devDependencies": {},
