@@ -82,7 +82,9 @@ i {
 }
 /* ----------------------------------------------------------------- */
 .post-trip-report-form {
-    /* display: none; */
+    display: none;
+    width: 200px;
+    height: auto;
     max-width: 300px;
     background-color: white;
     border: rgb(233, 233, 233) 2px solid;
