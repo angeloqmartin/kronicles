@@ -4,8 +4,8 @@ function hiddenElements() {
     $(".post-trip-report-form").hide();
 }
 
-function showPostForm() {
-    $(".post-btn").on("click","button", function() {
+function showElements() {
+    $(".post-btn").on("click", function() {
         console.log("button pressed");
     })
 };
@@ -79,6 +79,6 @@ function getAndDisplaySuggestedVentures() {
 // on page load function should run
 $(function() {
     hiddenElements();
-    showPostForm();
+    showElements();
     getAndDisplaySuggestedVentures();
 });
