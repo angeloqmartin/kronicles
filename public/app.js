@@ -17,7 +17,7 @@ function showElements() {
 
 function closePostForm() {
     $(".close-trip-report-form-btn").on("click", function(e) {
-        if (event.target == this) {
+        if (e.target == this) {
             hidePostForm();
         }
     })
