@@ -5,10 +5,10 @@ function hiddenElements() {
 }
 
 function showPostForm() {
-    $(".post-btn").on("click", function() {
+    $(".post-btn").on("click","button", function() {
         console.log("button pressed");
     })
-}
+};
 
 const mockVentures = {
     "suggestedVentures": [
@@ -79,5 +79,6 @@ function getAndDisplaySuggestedVentures() {
 // on page load function should run
 $(function() {
     hiddenElements();
+    showPostForm();
     getAndDisplaySuggestedVentures();
 });
