@@ -1,5 +1,7 @@
 "use strict";
 
+$(".post-trip-report-form").hide;
+
 const mockVentures = {
     "suggestedVentures": [
         {
@@ -60,10 +62,6 @@ function displaySuggestedVentures(data){
         )
     };
 };
-
-
-
-
 
 // function stays same when dealing with real API
 function getAndDisplaySuggestedVentures() {
