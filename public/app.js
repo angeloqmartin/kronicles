@@ -5,8 +5,8 @@ function hiddenElements() {
 }
 
 function showPostForm() {
-    $(".post-btn").on("click", () => {
-        console.log("button pressed")
+    $(".post-btn").on("click", function() {
+        console.log("button pressed");
     })
 }
 
