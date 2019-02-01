@@ -6,7 +6,7 @@ function hiddenElements() {
 
 function showElements() {
     $(".post-btn").on("click", function() {
-        console.log("button pressed");
+        $(".post-trip-report-form").show();
     })
 };
 
