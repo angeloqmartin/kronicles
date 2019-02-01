@@ -75,12 +75,12 @@ i {
     font-weight: 600;
     border: none;
     border-radius: 12px;
+}
 
-    /* positions btn in btm left */
+/* positions btn in btm left */
+.position-post {
     position: fixed;
     bottom: 20px;
-    /* right: 3px; */
-
     bottom: 0px;
     top: auto;
     right: 20px;
@@ -95,16 +95,6 @@ i {
     box-sizing: content-box !important;
     -webkit-box-sizing: content-box !important;
     -moz-box-sizing: content-box !important;
-
-
-
-
-
-
-
-
-
-
 }
 /* ----------------------------------------------------------------- */
 .post-trip-report-form {
