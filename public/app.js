@@ -1,6 +1,8 @@
 "use strict";
 
-$(".post-trip-report-form").hide;
+function hiddenElements() {
+    $(".post-trip-report-form").hide;
+}
 
 const mockVentures = {
     "suggestedVentures": [
@@ -70,5 +72,6 @@ function getAndDisplaySuggestedVentures() {
 
 // on page load function should run
 $(function() {
+    hiddenElements();
     getAndDisplaySuggestedVentures();
 });
