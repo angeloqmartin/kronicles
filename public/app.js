@@ -1,7 +1,7 @@
 "use strict";
 
 function hiddenElements() {
-    $(".post-trip-report-form").hide;
+    $(".post-trip-report-form").hide();
 }
 
 const mockVentures = {
