@@ -19,11 +19,9 @@ function hidePostForm() {
     $(".post-trip-report-form").hide();
 }
 
-function closePostForm() {
+function closePostFormBtn() {
     $(".close-trip-report-form-btn").on("click", function(e) {
-        if (e.target == this || window.onclick) {
             hidePostForm();
-        }
     })
 }
 
