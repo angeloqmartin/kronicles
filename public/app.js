@@ -1,23 +1,27 @@
 "use strict";
 
-function hidePostForm() {
-    $(".post-trip-report-form").hide();
-}
-
 function hiddenElements() {
     hidePostForm();
     closePostForm()
 }
 
 function showElements() {
+    showPostForm()
+};
+
+function showPostForm() {
     $(".post-btn").on("click", function() {
         $(".post-trip-report-form").show();
     })
-};
+}
+
+function hidePostForm() {
+    $(".post-trip-report-form").hide();
+}
 
 function closePostForm() {
     $(".close-trip-report-form-btn").on("click", function(e) {
-        if (e.target == this) {
+        if (e.target == this || window.onclick) {
             hidePostForm();
         }
     })
