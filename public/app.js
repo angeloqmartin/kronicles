@@ -1,7 +1,11 @@
 "use strict";
 
-function hiddenElements() {
+function hidePostForm() {
     $(".post-trip-report-form").hide();
+}
+
+function hiddenElements() {
+    hidePostForm();
 }
 
 function showElements() {
@@ -9,6 +13,12 @@ function showElements() {
         $(".post-trip-report-form").show();
     })
 };
+
+function closePostForm() {
+    $(".close-trip-report-form-btn").on("click", function() {
+        hidePostForm();
+    })
+}
 
 const mockVentures = {
     "suggestedVentures": [
