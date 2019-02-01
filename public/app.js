@@ -6,6 +6,7 @@ function hidePostForm() {
 
 function hiddenElements() {
     hidePostForm();
+    closePostForm()
 }
 
 function showElements() {
