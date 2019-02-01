@@ -56,9 +56,6 @@ i {
     -webkit-transform: rotate(-45deg);
 }
 /* ----------------------------------------------------------------- */
-
-
-/* ----------------------------------------------------------------- */
 .trip-suggestions{
     margin: 0;
     display: block;
@@ -76,7 +73,6 @@ i {
     border: none;
     border-radius: 12px;
 }
-
 /* positions btn in btm left */
 .position-post {
     position: fixed;
@@ -97,7 +93,7 @@ i {
 }
 /* ----------------------------------------------------------------- */
 .post-trip-report-form {
-    /* display: none; */
+    display: none;
     max-width: 300px;
     height: auto;
     background-color: white;
