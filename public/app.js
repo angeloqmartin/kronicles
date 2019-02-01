@@ -4,6 +4,12 @@ function hiddenElements() {
     $(".post-trip-report-form").hide();
 }
 
+function showPostForm() {
+    $(".post-btn").on("click", () => {
+        console.log("button pressed")
+    })
+}
+
 const mockVentures = {
     "suggestedVentures": [
         {
