@@ -1,42 +1,56 @@
 "use strict";
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const express = require('express');
+const { TripReport } = require('./model');
 const app = express();
 
 app.use(express.static('public'));
 
-// this ref the mongoDB installed on localhost
-mongoose.connect('mongodb://localhost/trips')
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.error('Could not connect to MongoDB...', err));
-
-const userTripReportSchema = new mongoose.Schema({
-    locationName: { type: String, required: true }, // 'DISNEYWORLD'
-    // originalNameTyped: { type: String, required: true } ,// '  dis ney worl   d'
-    locationCategory: { type: String, require: true},
-    postalCode: { type: String, require: true},
-    content: { type: String, required: true },
-    isPublished: Boolean
-    // rating: { type: Number }, // 1-5 // add rating feature
-})
-
-const Trips = mongoose.model('Trips', userTripReportSchema);
-const trips = new Trips({
-    locationName: "DISNEYWORLD",
-    locationCategory: "outdoors",
-    postalCode: "32830",
-    content:"The Walt Disney World Resort, also called Walt Disney World and Disney World, is an entertainment complex in Bay Lake and Lake Buena Vista, Florida, in the United States, near the cities Orlando and Kissimmee.",
-    isPublished:true
-})
-
-// run test to prevent dup tripReports => // '  dis ney worl   d' // 'DISNEYWORLD'
-
-if (require.main === module) {
-    app.listen(process.env.PORT || 8080, function () {
-        console.log(`listening on ${this.address().port}...`)
+// closeServer needs access to a server object, but that only
+// gets created when `runServer` runs
+// so declare `server` here
+// and then assign a value to it in run
+let server;
+ 
+// this function connects to our database, then starts the server
+function runServer(databaseUrl, port = PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve();
+      })
+        .on('error', err => {
+          mongoose.disconnect();
+          reject(err);
+        });
     });
-};
-
+  });
+}
+// this function closes the server, and returns a promise. we'll
+// use it in our integration tests later.
+function closeServer() {
+  return mongoose.disconnect().then(() => {
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  });
+}
+// if server.js is called directly (aka, with `node server.js`), this block
+// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+if (require.main === module) {
+  runServer(DATABASE_URL).catch(err => console.error(err));
+}
 
 module.exports = app;
+module.exports = { runServer, app, closeServer };
