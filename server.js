@@ -25,20 +25,3 @@ if (require.main === module) {
 };
     
 module.exports = app;
-
-
-
-
-
-// const { TripReport } = require('./model');
-// app.get("/tripReport", (req, res) => {
-//   TripReport
-//   .find()
-//   .then(posts => {
-//     res.json(posts.map(posts => posts.serialize()));
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     res.status(500).json({error:'error'})
-//   });
-// });
