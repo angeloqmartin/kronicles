@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const tripReportSchema = new mongoose.Schema({
-    locationName: { type: String, required: true }, // 'DISNEYWORLD'
+    locationName: { type: String, required: true },
     // run test to prevent dup tripReports => // '  dis ney worl   d' // 'DISNEYWORLD'
     postalCode: { type: String, require: true},
     content: { type: String, required: true },
@@ -13,4 +13,4 @@ const tripReportSchema = new mongoose.Schema({
   
 const TripReport = mongoose.model('TripReport', tripReportSchema);
 
-module.exports = {TripReport};
+module.exports = { TripReport };

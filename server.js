@@ -3,12 +3,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const { TripReport } = require('./model');
 
+const tripReportRouter = require("./tripReportRouter")
+const { TripReport } = require('./model');
 const app = express();
 
-app.use(express.json());
 app.use(express.static('public'));
+app.use(express.json());
+
+app.get("/tripReport", (req, res) => {
+  TripReport
+  .find()
+  .then(posts => {
+    res.json(posts.map(posts => posts.serialize()));
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({error:'error'})
+  });
+});
 
 // this ref the mongoDB installed on localhost
 mongoose.connect('mongodb://localhost/trips')
