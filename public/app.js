@@ -2,7 +2,7 @@
 
 function hiddenElements() {
     hidePostForm();
-    closePostForm()
+    closePostFormBtn();
 }
 
 function showElements() {
