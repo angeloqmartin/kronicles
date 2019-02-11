@@ -15,10 +15,13 @@ async function createCourse() {
     console.log(result);
 }
 
-createCourse();
+// createCourse();
 
 router.get("/", (req, res) => {
-    res.json(TripReport).get();
+    TripReport.find()
+    .then(trips => {
+        res.json(trips);
+    })
 })
 
 module.exports = router;

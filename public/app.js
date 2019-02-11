@@ -10,7 +10,7 @@ function showElements() {
 };
 
 function showPostForm() {
-    $(".post-btn").on("click", function() {
+    $(".post-btn").on("click", function () {
         $(".post-trip-report-form").show();
     })
 }
@@ -20,80 +20,49 @@ function hidePostForm() {
 }
 
 function closePostFormBtn() {
-    $(".close-trip-report-form-btn").on("click", function(e) {
-            hidePostForm();
+    $(".close-trip-report-form-btn").on("click", function (e) {
+        hidePostForm();
     })
 }
 
-const mockVentures = {
-    "suggestedVentures": [
-        {
-            "id": "1111111",
-            "locationTitle": "la super park",
-            "text": "best park in la",
-            "visted": true,
-            "address": {
-                "street": "123 nonReal Ln",
-                "city": "Los Angeles",
-                "description": "California",
-                "zipCode": 90001,
-            },
-        },
-        {
-            "id": " ",
-            "locationTitle": "best foods",
-            "text": "best park in la",
-            "visted": true,
-            "address": {
-                "street": "123 nonReal Ln",
-                "city": "Los Angeles",
-                "description": "California",
-                "zipCode": 90001,
-            },
-        },
-        {
-            "id": "3333333",
-            "locationTitle": "la super park",
-            "text": "best park in la",
-            "visted": true,
-            "address": {
-                "street": "123 nonReal Ln",
-                "city": "Los Angeles",
-                "description": "California",
-                "zipCode": 90001,
-            },
-        },
-    ]
-};
+function submitTripForm() {
+    $(".post-trip-report-form").on("submit", function (event) {
+        event.preventDefault();
+        // {
+        //     locationName: $("#post-form-title").val(),
+        //     postalCode; "93000",
+        //     content; "",
+        //     isPublished: ""
+        // }
 
-function getSuggestedVentures(ventures){
-    setTimeout(() => { 
-        ventures(mockVentures) 
-    });
-};
+        console.log("form submitted")
+    })
+}
 
-// function stays same when dealing with real API
-function displaySuggestedVentures(data){
-    for (let index in data.suggestedVentures) {
-        $("#js-tripReports-container").append(
-        `<div class="js-user-contain-grid">
-        <h3 class="user-content-header">${data.suggestedVentures[index].locationTitle}</h3>
-        <div class="js-trip-container">
-        <p class="js-container-content">${data.suggestedVentures[index].text}</p>
-        </div>
-        </div>`
-        )
-    };
-};
+function getTrips() {
+    fetch("http://localhost:8080/trip-report")
+        .then(response => {
+            return response.json();
+        })
+        .then(trips => {
+            trips.forEach(element => {
+                $("#js-tripReports-container").append(
+                    `<div class="js-user-contain-grid">
+                        <h3 class="user-content-header">${element.locationName}</h3>
+                        <div class="js-trip-container">
+                            <p class="js-container-content">${element.content}</p>
+                        </div>
+                    </div>`)
 
-// function stays same when dealing with real API
-function getAndDisplaySuggestedVentures() {
-    getSuggestedVentures(displaySuggestedVentures);
-};
+            });
+            console.log(trips)
+        })
+}
 
 // on page load function should run
-$(function() {
+$(function () {
     hiddenElements();
     showElements();
-    getAndDisplaySuggestedVentures();
+    getTrips();
+    submitTripForm();
 });

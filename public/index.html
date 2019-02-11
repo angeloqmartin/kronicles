@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
     <header role="heading">
         <h1><span class="mirror">K</span>ronicles</h1>
@@ -25,37 +27,43 @@
                     <option value="food">food</option>
                 </select><br>
                 <label for="location">location:</label>
-                <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code" required>
+                <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210"
+                    title="Five digit zip code" required>
                 <button class="search-btn" type="submit" role="button"><i class="arrow dir"></i></button>
             </fieldset>
         </form>
         <h2 class="trip-suggestions">suggestions:</h2>
         <div class="tripReport-container" id="js-tripReports-container"></div>
         <button class="post-btn position-post" name="post" type="button">POST</button>
-        <form role="form" action="#" class="post-trip-report-form position-post" id="trip-report-form">
+        <form role="form" class="post-trip-report-form position-post" id="trip-report-form">
             <fieldset>
-                <legend>Write a Trip Report</legend>
                 <label for="title" form="create-trip-report-form-report-form">Title:</label>
-                <input class="post-form-fields" role="text" form="create-trip-report-form-report-form" type="text" placeholder="enter name of place" name="title" required>
+                <input class="post-form-fields" id="post-form-title" role="text" form="create-trip-report-form-report-form" type="text"
+                    placeholder="enter name of place" name="title" required/>
                 <label for="tirp-category" form="create-trip-report-form-report-form">Category:</label>
-                <select class="post-form-fields" form="create-trip-report-form-report-form" name="tirp-category" required>
-                <option value="outdoors">outdoors</option>
-                <option value="indoors">indoors</option>
-                <option value="food">food</option>
+                <select class="post-form-fields" form="create-trip-report-form-report-form" name="tirp-category"
+                    required>
+                    <option value="outdoors">outdoors</option>
+                    <option value="indoors">indoors</option>
+                    <option value="food">food</option>
                 </select>
                 <label for="trip-location" form="create-trip-report-form-report-form">Location:</label>
-                <input class="post-form-fields" role="searchbox" form="create-trip-report-form-report-form" type="text" name="trip-location" pattern="[0-9]{5}" placeholder="zip code" title="Five digit zip code" max="5" required>
+                <input class="post-form-fields" role="searchbox" form="create-trip-report-form-report-form" type="text"
+                    name="trip-location" pattern="[0-9]{5}" placeholder="zip code" title="Five digit zip code" max="5"
+                    required>
                 <label for="description" form="create-trip-report-form-report-form">Description:</label>
-                <textarea class="post-form-fields" role="textbox" form="create-trip-report-form-report-form" maxlength="500" name="description" placeholder="write a description of this place..." required></textarea>
-            </fieldset>
+                <textarea class="post-form-fields" role="textbox" form="create-trip-report-form-report-form" maxlength="500"
+                    name="description" placeholder="write a description of this place..." required></textarea>    
+            </fieldset>           
             <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit">Post Trip</button>
             <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
         </form>
     </main>
     <footer>&copy; 2019 REIGN</footer>
     <!-- js script links -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
-</html>
 
+</html>
