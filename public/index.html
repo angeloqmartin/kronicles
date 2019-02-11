@@ -35,27 +35,25 @@
         <h2 class="trip-suggestions">suggestions:</h2>
         <div class="tripReport-container" id="js-tripReports-container"></div>
         <button class="post-btn position-post" name="post" type="button">POST</button>
-        <form role="form" class="post-trip-report-form position-post" id="trip-report-form">
+        <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
             <fieldset>
-                <label for="title" form="create-trip-report-form-report-form">Title:</label>
-                <input class="post-form-fields" id="post-form-title" role="text" form="create-trip-report-form-report-form" type="text"
-                    placeholder="enter name of place" name="title" required/>
-                <label for="tirp-category" form="create-trip-report-form-report-form">Category:</label>
-                <select class="post-form-fields" form="create-trip-report-form-report-form" name="tirp-category"
-                    required>
+                <label for="title">Title:</label>
+                <input class="post-form-fields" id="post-form-title" role="text" type="text" placeholder="enter name of place"
+                    name="title" required>
+                <label for="tirp-category">Category:</label>
+                <select class="post-form-fields" name="tirp-category" required>
                     <option value="outdoors">outdoors</option>
                     <option value="indoors">indoors</option>
                     <option value="food">food</option>
                 </select>
-                <label for="trip-location" form="create-trip-report-form-report-form">Location:</label>
-                <input class="post-form-fields" role="searchbox" form="create-trip-report-form-report-form" type="text"
-                    name="trip-location" pattern="[0-9]{5}" placeholder="zip code" title="Five digit zip code" max="5"
-                    required>
-                <label for="description" form="create-trip-report-form-report-form">Description:</label>
-                <textarea class="post-form-fields" role="textbox" form="create-trip-report-form-report-form" maxlength="500"
-                    name="description" placeholder="write a description of this place..." required></textarea>    
-            </fieldset>           
-            <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit">Post Trip</button>
+                <label for="trip-location">Location:</label>
+                <input class="post-form-fields" role="searchbox" type="text" name="trip-location" pattern="[0-9]{5}"
+                    placeholder="zip code" title="Five digit zip code" max="5" required>
+                <label for="description">Description:</label>
+                <textarea class="post-form-fields" role="textbox" maxlength="500" name="description" placeholder="write a description of this place..."
+                    required></textarea>
+            </fieldset>
+            <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
             <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
         </form>
     </main>

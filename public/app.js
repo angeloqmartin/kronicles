@@ -26,13 +26,14 @@ function closePostFormBtn() {
 }
 
 function submitTripForm() {
-    $(".post-trip-report-form").on("submit", function (event) {
-        event.preventDefault();
+    $(".post-trip-report-form").on("submit", function (e) {
+        e.preventDefault();
+
         // {
         //     locationName: $("#post-form-title").val(),
         //     postalCode; "93000",
         //     content; "",
-        //     isPublished: ""
+        //     isPublished: true;
         // }
 
         console.log("form submitted")
