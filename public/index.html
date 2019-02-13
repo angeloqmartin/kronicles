@@ -47,10 +47,10 @@
                     <option value="food">food</option>
                 </select>
                 <label for="trip-location">Location:</label>
-                <input class="post-form-fields" role="searchbox" type="text" name="trip-location" pattern="[0-9]{5}"
+                <input class="post-form-fields" id="js-post-form-location" role="searchbox" type="text" name="trip-location" pattern="[0-9]{5}"
                     placeholder="zip code" title="Five digit zip code" max="5" required>
                 <label for="description">Description:</label>
-                <textarea class="post-form-fields" role="textbox" maxlength="500" name="description" placeholder="write a description of this place..."
+                <textarea class="post-form-fields" id="js-post-form-content" role="textbox" maxlength="500" name="description" placeholder="write a description of this place..."
                     required></textarea>
             </fieldset>
             <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
