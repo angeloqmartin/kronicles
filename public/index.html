@@ -12,50 +12,82 @@
 </head>
 
 <body>
+
     <header role="heading">
         <h1><span class="mirror">K</span>ronicles</h1>
     </header>
+
     <main role="main">
-        <form role="form" action="#" class="seach-trip-report">
-            <fieldset>
-                <legend>Search for things to do in your area</legend>
-                <label for="categories">category:</label>
-                <select class="search-field" name="categories" id="categories">
-                    <option value="all">all</option>
-                    <option value="outdoors">outdoors</option>
-                    <option value="indoors">indoors</option>
-                    <option value="food">food</option>
-                </select><br>
-                <label for="location">location:</label>
-                <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}" placeholder="90210"
-                    title="Five digit zip code" required>
-                <button class="search-btn" type="submit" role="button"><i class="arrow dir"></i></button>
-            </fieldset>
-        </form>
-        <h2 class="trip-suggestions">suggestions:</h2>
-        <div class="tripReport-container" id="js-tripReports-container"></div>
-        <button class="post-btn position-post" name="post" type="button">POST</button>
-        <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
-            <fieldset>
-                <label for="title">Title:</label>
-                <input class="post-form-fields" id="post-form-title" role="text" type="text" placeholder="enter name of place"
-                    name="title" required>
-                <label for="tirp-category">Category:</label>
-                <select class="post-form-fields" name="tirp-category" required>
-                    <option value="outdoors">outdoors</option>
-                    <option value="indoors">indoors</option>
-                    <option value="food">food</option>
-                </select>
-                <label for="trip-location">Location:</label>
-                <input class="post-form-fields" id="js-post-form-location" role="searchbox" type="text" name="trip-location" pattern="[0-9]{5}"
-                    placeholder="zip code" title="Five digit zip code" max="5" required>
-                <label for="description">Description:</label>
-                <textarea class="post-form-fields" id="js-post-form-content" role="textbox" maxlength="500" name="description" placeholder="write a description of this place..."
-                    required></textarea>
-            </fieldset>
-            <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
-            <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
-        </form>
+
+        <div class="landing">
+            <h2>Lorem ipsum dolor sit amet, fabulas feugait convenire</h2>
+            <p>Lorem ipsum dolor sit amet, fabulas feugait convenire cum an, ea errem persius his. Sumo iudico
+                efficiantur nec at, at putant denique sea. Diam paulo percipit in vim, ne euismod periculis cum. Atqui
+                salutandi scriptorem ne vix, feugait periculis honestatis his et. Dictas mollis nostrud pri et, te tota
+                putant ius, minim omittam has et. Mea dicit laboramus ex. Illum causae consulatu his in, scripta
+                mnesarchum at eum, exerci audiamvtincidunt sed ne. Mea essent philosophia ei, mel vitae dictas in. Diam
+                malorum blandit ut usu. Duov latine propriae imperdiet et. Ea erant utamur fierent nam.</p>
+
+            <section class="login-section">
+                <p>start finding places too take trips now !</p>
+                <form class="login-form" action="">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <label for="username-input">Username</label>
+                        <input class="login-form-field" id="username-input" type="text" placeholder="Type your username"><br>
+                        <label for="password-input">Password</label>
+                        <input class="login-form-field" id="password-input" type="password" placeholder="Type your password"><br>
+                        <button class="login-btn">Login</button>
+                    </fieldset>
+                    <button></button>
+                    <a class="guest-login">continue as guest</a>
+                </form>
+            </section>
+
+        </div>
+
+        <div class="findTripsPage hide">
+            <form role="form" action="#" class="seach-trip-report">
+                <fieldset>
+                    <legend>Search for things to do in your area</legend>
+                    <label for="categories">category:</label>
+                    <select class="search-field" name="categories" id="categories">
+                        <option value="all">all</option>
+                        <option value="outdoors">outdoors</option>
+                        <option value="indoors">indoors</option>
+                        <option value="food">food</option>
+                    </select><br>
+                    <label for="location">location:</label>
+                    <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}"
+                        placeholder="90210" title="Five digit zip code" required>
+                    <button class="search-btn" type="submit" role="button"><i class="arrow dir"></i></button>
+                </fieldset>
+            </form>
+            <h2 class="trip-suggestions">suggestions:</h2>
+            <div class="tripReport-container" id="js-tripReports-container"></div>
+            <button class="post-btn position-post" name="post" type="button">POST</button>
+            <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
+                <fieldset>
+                    <label for="title">Title:</label>
+                    <input class="post-form-fields" id="post-form-title" role="text" type="text" placeholder="enter name of place"
+                        name="title" required>
+                    <label for="tirp-category">Category:</label>
+                    <select class="post-form-fields" name="tirp-category" required>
+                        <option value="outdoors">outdoors</option>
+                        <option value="indoors">indoors</option>
+                        <option value="food">food</option>
+                    </select>
+                    <label for="trip-location">Location:</label>
+                    <input class="post-form-fields" id="js-post-form-location" role="searchbox" type="text" name="trip-location"
+                        pattern="[0-9]{5}" placeholder="zip code" title="Five digit zip code" max="5" required>
+                    <label for="description">Description:</label>
+                    <textarea class="post-form-fields" id="js-post-form-content" role="textbox" maxlength="500" name="description"
+                        placeholder="write a description of this place..." required></textarea>
+                </fieldset>
+                <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
+                <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
+            </form>
+        </div>
     </main>
     <footer>&copy; 2019 REIGN</footer>
     <!-- js script links -->
