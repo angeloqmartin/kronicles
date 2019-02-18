@@ -34,9 +34,18 @@ h1 {
 }
 
 /* ----------------------------------------------------------------- */
+.landing p {
+    margin-bottom: 50px;
+}
+
 .login-section {
     background-color: #EFEFEF;
     height: 100%;
+}
+
+.login-section h2{
+    text-align: center; 
+    padding: 50px;
 }
 
 .login-form {
