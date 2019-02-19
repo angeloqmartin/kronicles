@@ -1,4 +1,21 @@
 /* ----------------------------------------------------------------- */
+.landing h2{
+    padding: 10px;
+    font-size: 3em;
+    font: bolder;
+}
+
+.landing p {
+    text-align: center;
+    /* padding: 20px; */
+    font-size: 2em;
+    font: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
 .hide {
     display: none;
 }
@@ -34,18 +51,22 @@ h1 {
 }
 
 /* ----------------------------------------------------------------- */
-.landing p {
-    margin-bottom: 50px;
+.landing-content {
+    height: 100%;
 }
+.landing p {
+    max-width: 1200px;
+    margin: auto;}
 
 .login-section {
-    background-color: #EFEFEF;
+    background-color: #278BFF;
     height: 100%;
 }
 
 .login-section h2{
+    color: rgb(255, 255, 255);
     text-align: center; 
-    padding: 50px;
+    padding: 100px;
 }
 
 .login-form {
@@ -93,6 +114,8 @@ h1 {
 
 .guest-login {
     float: right;
+    color: rgb(136, 45, 255);
+    border-bottom: 1px solid 
 }
 
 /* ----------------------------------------------------------------- */
