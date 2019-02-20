@@ -62,13 +62,15 @@ h1 {
     background-color: #278BFF;
     height: 100%;
 }
-
+img {
+    height: 800px;
+    width: 800px;
+}
 .login-section h2{
     color: rgb(255, 255, 255);
     text-align: center; 
     padding: 100px;
 }
-
 .login-form {
     max-width: 400px;
     margin: 50px auto;
