@@ -1,5 +1,11 @@
 "use strict";
 
+let STORE = {
+    trips: [
+
+    ]
+}
+
 function hideLandingPage() {
     $(".landing").hide();
 }
@@ -78,6 +84,7 @@ function getTrips() {
             return response.json();
         })
         .then(trips => {
+            STORE.trips = trips;
             $("#js-tripReports-container").empty();
             trips.forEach(element => {
                 $("#js-tripReports-container").append(
@@ -108,13 +115,24 @@ function deleteTripsReportBtn() {
 function editTripReportformBtn() {
     $("#js-tripReports-container").on("click", ".edit-trip-report-btn", function (e) {
         e.preventDefault();
+        console.log("edit button button clicked")
+        $(".post-trip-report-form").show();
         const id = $(event.target).data("id")
-        fetch(`http://localhost:8080/trip-report/${id}`, {
-                method: "update",
-            })
-            .then()
+        const tripFound = STORE.trips.find((trip) => trip._id == id);
+        $("#post-form-title").val(tripFound.title)
+        $("#post-form-category").val(tripFound.category)
+        $("#post-form-postal-code").val(tripFound.postalCode)
+        $("#post-form-content").val(tripFound.content)
+        $("#post-form-id").val(tripFound._id)
+
+        // fetch(`http://localhost:8080/trip-report/${id}`, {
+        //         method: "update",
+        //     })
+            
+        //     .then()
     })
 }
+
 // on page load function should run
 $(function () {
     hiddenElements();

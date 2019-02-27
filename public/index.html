@@ -20,13 +20,28 @@
     <main role="main">
 
         <div class="landing">
-            <section class="landing-content">
-                <h2>BE SPONTANEOUS</h2>
-                <p>Kronicles allows you to view a series of events as they occur in your area. Or you can share your experience with others</p>
-            </section>
-            <img src="/public/dialogue-box.jpgs">
+            <h2>BE SPONTANEOUS</h2>
+            <p>Kronicles allows you to view a series of events as they occur in your area. Or you can share your experience with others</p>
+            <div class="row">
+                <div class="column">
+                    <img src="/messIcon.jpg" alt="">
+                    <h3>outdoors</h3>
+                </div>
+                <div class="column">
+                    <img src="/messIcon.jpg" alt="">
+                    <h3>indoors</h3>
+                </div>
+                <div class="column">
+                    <img src="/messIcon.jpg" alt="">
+                    <h3>events</h3>
+                </div>
+                <div class="column">
+                    <img src="/messIcon.jpg" alt="">
+                    <h3>explore</h3>
+                </div>    
+            </div>
             <section class="login-section">
-                <h2>Login to SHARE. FIND. CONNECT. EXPLORE!</h2>
+                <h2>Login to SHARE. FIND. CONNECT. and EXPLORE!</h2>
                 <form class="login-form" action="">
                     <fieldset>
                         <legend>Login</legend>
@@ -40,10 +55,10 @@
                     <a class="guest-login">use guest account</a>
                 </form>
             </section>
-
         </div>
 
         <div class="findTripsPage hide">
+
             <form role="form" action="#" class="seach-trip-report">
                 <fieldset>
                     <legend>Search for things to do in your area</legend>
@@ -60,10 +75,35 @@
                     <button class="search-btn" type="submit" role="button"><i class="arrow dir"></i></button>
                 </fieldset>
             </form>
+
             <h2 class="trip-suggestions">suggestions:</h2>
             <div class="tripReport-container" id="js-tripReports-container"></div>
             <button class="post-btn position-post" name="post" type="button">POST</button>
+
             <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
+                <fieldset>
+                    <label for="title">Title:</label>
+                    <input class="post-form-fields" id="post-form-title" role="text" type="text" placeholder="enter name of place"
+                        name="title" required>
+                    <label for="tirp-category">Category:</label>
+                    <select class="post-form-fields" id="post-form-category" name="tirp-category" required>
+                        <option value="outdoors">outdoors</option>
+                        <option value="indoors">indoors</option>
+                        <option value="food">food</option>
+                    </select>
+                    <label for="trip-location">Location:</label>
+                    <input class="post-form-fields" id="post-form-postal-code" role="searchbox" type="text" name="trip-location"
+                        pattern="[0-9]{5}" placeholder="zip code" title="Five digit zip code" max="5" required>
+                    <label for="description">Description:</label>
+                    <textarea class="post-form-fields" id="post-form-content" role="textbox" maxlength="500" name="description"
+                        placeholder="write a description of this place..." required></textarea>
+                    <input type="hidden" id="post-form-id">
+                </fieldset>
+                <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
+                <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
+            </form>
+
+            <!-- <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
                 <fieldset>
                     <label for="title">Title:</label>
                     <input class="post-form-fields" id="post-form-title" role="text" type="text" placeholder="enter name of place"
@@ -83,7 +123,8 @@
                 </fieldset>
                 <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
                 <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
-            </form>
+            </form> -->
+
         </div>
     </main>
     <footer>&copy; 2019 REIGN</footer>

@@ -25,7 +25,7 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
     TripReport.update({
         id: req.params.id,
-        locationName: req.body.locationName,
+        tripTitle: req.body.tripTitle,
         postalCode: req.body.postalCode,
         content: req.body.content
     })

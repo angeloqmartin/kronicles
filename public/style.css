@@ -1,7 +1,20 @@
 /* ----------------------------------------------------------------- */
-.landing h2{
+.hide {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.landing h2 {
     padding: 10px;
-    font-size: 3em;
+    font-size: 2.5em;
     font: bolder;
 }
 
@@ -10,14 +23,6 @@
     /* padding: 20px; */
     font-size: 2em;
     font: 700;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
-}
-
-.hide {
-    display: none;
 }
 
 header {
@@ -54,23 +59,45 @@ h1 {
 .landing-content {
     height: 100%;
 }
+
 .landing p {
     max-width: 1200px;
-    margin: auto;}
+    margin: auto;
+}
+
+/* ----------------------------------------------------------------- */
+.row {
+    margin: 30px 0 0 0; 
+    display: flex;
+    background-color: rgb(206, 206, 206);
+}
+.column {
+    flex: 33.33%;
+    padding: 5px;
+    text-align: center;
+}
+.column img {
+    width:100%
+}
+.column h3{
+    margin: 0 0 20px 0;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+/* ----------------------------------------------------------------- */
 
 .login-section {
     background-color: #278BFF;
     height: 100%;
 }
-img {
-    height: 800px;
-    width: 800px;
-}
-.login-section h2{
+
+.login-section h2 {
     color: rgb(255, 255, 255);
-    text-align: center; 
+    text-align: center;
     padding: 100px;
+    margin: 0;
 }
+
 .login-form {
     max-width: 400px;
     margin: 50px auto;
@@ -117,7 +144,7 @@ img {
 .guest-login {
     float: right;
     color: rgb(136, 45, 255);
-    border-bottom: 1px solid 
+    border-bottom: 1px solid
 }
 
 /* ----------------------------------------------------------------- */
@@ -309,3 +336,6 @@ footer {
     color: #FFFFFF;
     text-align: center;
 }
+
+
+/* 500 width flex dir for img should be columum */
