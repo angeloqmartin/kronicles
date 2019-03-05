@@ -5,29 +5,33 @@ const mongoose = require('mongoose');
 const { TripReport } = require('./model');
     
 router.get("/", (req, res) => {
-    TripReport.find()
+    return TripReport.find()
     .then(trips => {
         res.json(trips);
     })
 })
 router.post("/", (req,res) => {
-    TripReport.create(req.body)
+    return TripReport.create(req.body)
     .then(data => {
-        res.json(data)
+        res.json(data).status(201)
     })
 })
 router.delete("/:id", (req, res) => {
-    TripReport.deleteOne( { "_id" : req.params.id})
+    return TripReport.deleteOne( { "_id" : req.params.id})
     .then(data => {
         res.json(data)
     })
 })
 router.put("/:id", (req, res) => {
-    TripReport.update({
+    return TripReport.update({
         id: req.params.id,
-        tripTitle: req.body.tripTitle,
+        title: req.body.title,
         postalCode: req.body.postalCode,
-        content: req.body.content
+        content: req.body.content,
+        category: req.body.category
+    })
+    .then(data => {
+        res.json(data);
     })
 })
 

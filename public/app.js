@@ -22,6 +22,8 @@ function showElements() {
 function showPostForm() {
     $(".post-btn").on("click", function () {
         $(".post-trip-report-form").show();
+        $("#post-form-id").val("");
+
     })
 }
 
@@ -60,12 +62,27 @@ function submitTripForm() {
     $(".post-trip-report-form").on("submit", function (e) {
         e.preventDefault();
         const tripReport = {
-            locationName: $("#post-form-title").val(),
-            postalCode: $("#js-post-form-location").val(),
-            content: $("#js-post-form-content").val(),
+            title: $("#post-form-title").val(),
+            postalCode: $("#post-form-postal-code").val(),
+            content: $("#post-form-content").val(),
+            category: $("#post-form-category").val(),
             isPublished: true
         }
-        fetch("http://localhost:8080/trip-report", {
+        const id = $("#post-form-id").val();
+        if (id) {
+            tripReport.id = id;
+            fetch(`http://localhost:8080/trip-report/${id}`, {
+                method: "put",
+                body: JSON.stringify(tripReport),
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+            .then(data => {
+                getTrips();
+            })
+        } else {
+            fetch("http://localhost:8080/trip-report", {
                 method: "post",
                 body: JSON.stringify(tripReport),
                 headers: {
@@ -75,6 +92,7 @@ function submitTripForm() {
             .then(data => {
                 getTrips();
             })
+        }
     })
 }
 
@@ -89,9 +107,11 @@ function getTrips() {
             trips.forEach(element => {
                 $("#js-tripReports-container").append(
                     `<div class="js-user-contain-grid">
-                    <h3 class="user-content-header">${element.locationName}</h3>
+                    <h3 class="user-content-header">${element.title}</h3>
                     <div class="js-trip-container">
                         <p class="js-container-content">${element.content}</p>
+                        <p class="js-post-form-postal-code">${element.postalCode}</p>
+                        <p class="js-post-form-postal-code">${element.category}</p>
                     </div>
                     <button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
                     <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
