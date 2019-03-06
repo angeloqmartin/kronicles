@@ -2,7 +2,6 @@
 
 let STORE = {
     trips: [
-
     ]
 }
 
@@ -144,12 +143,6 @@ function editTripReportformBtn() {
         $("#post-form-postal-code").val(tripFound.postalCode)
         $("#post-form-content").val(tripFound.content)
         $("#post-form-id").val(tripFound._id)
-
-        // fetch(`http://localhost:8080/trip-report/${id}`, {
-        //         method: "update",
-        //     })
-            
-        //     .then()
     })
 }
 

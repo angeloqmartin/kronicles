@@ -40,7 +40,7 @@ function tearDownDb() {
     });
 }
 
-// put randomish documents in db
+// put randomish documents in db  
 // to have data to work with and assert about.
 // use Faker library to automatically
 // generate placeholder values for title and content
@@ -63,7 +63,7 @@ describe('trip reports API resource', function () {
     before(function () {
         return runServer(TEST_DATABASE_URL);
     });
-    beforeEach(function(){
+    beforeEach(function () {
         return seedTripData();
     })
     afterEach(function () {
@@ -99,7 +99,7 @@ describe('trip reports API resource', function () {
                 .then(_res => {
                     res = _res;
                     res.should.have.status(200);
-//----- expected {} to have property 'length' -----
+                    //----- expected {} to have property 'length' -----
                     // res.body.should.have.lengthOf.at.least(1);
                     // return TripReport.count();
                 })
@@ -119,5 +119,18 @@ describe('trip reports API resource', function () {
                 })
         });
     });
+
+    describe('POST endpoint', function () {
+        // strategy: make a POST request with data,
+        // then prove that the post we get back has
+        // right keys, and that `id` is there
+        it('should add a new blog post', function () {
+            return chai.request(app).post('/')
+                .then(function (res) {
+                    // res.should.have.status(201);
+                    // res.body.should.be.a('object');
+                })
+        })
+    })
 
 })
