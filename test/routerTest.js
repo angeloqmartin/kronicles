@@ -149,8 +149,8 @@ describe('trip reports API resource', function () {
                 updateData.id = post.id;
 
                 return chai.request(app)
-                .put(`/post/${post.id}`)
-                .send(updateData)
+                    .put(`/post/${post.id}`)
+                    .send(updateData)
             })
             .then(res => {
                 res.should.have.status(209);
@@ -160,5 +160,28 @@ describe('trip reports API resource', function () {
                 post.title.should.equal(updateData.title);
                 post.content.should.equal(updateData.content);
             });
+    });
+    describe('DELETE endpoint', function () {
+        //strategy:
+        //1. get a post
+        //2. make a DELETE request for the post's id
+        //3. assert response has right status code
+        //4. prove that post with the id doen't exist in db anymore
+        it('should delete a post id', function () {
+            let post;
+            return TripReport
+                .findOne()
+                .then(_post => {
+                    post = _post;
+                    return chai.request(app).delete(`/posts/${post.id}`);
+                })
+                .then(res => {
+                    res.should.have.status(204);
+                    return TripReport.findById(post.id)
+                })
+                .then(_post => {
+                    should.not.exist(_post);
+                });
+        });
     });
 });
