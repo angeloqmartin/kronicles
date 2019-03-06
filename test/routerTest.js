@@ -129,8 +129,36 @@ describe('trip reports API resource', function () {
                 .then(function (res) {
                     // res.should.have.status(201);
                     // res.body.should.be.a('object');
-                })
+                });
+        });
+    });
+    describe('PUT endpoint', function () {
+        //strategy:
+        // 1. Get an existing post from db
+        // 2. Make a PUT request to update post
+        // 3. Prove post in db in correctly updated
+        it('should update fields you send over', function () {
+            const updateData = {
+                title: 'test data',
+                content: 'enter content here'
+            }
         })
-    })
+        return TripReport
+            .findOne()
+            .then(post => {
+                updateData.id = post.id;
 
-})
+                return chai.request(app)
+                .put(`/post/${post.id}`)
+                .send(updateData)
+            })
+            .then(res => {
+                res.should.have.status(209);
+                return TripReport.findById(updateData.id)
+            })
+            .then(post => {
+                post.title.should.equal(updateData.title);
+                post.content.should.equal(updateData.content);
+            });
+    });
+});
