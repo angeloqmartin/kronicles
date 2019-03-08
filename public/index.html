@@ -12,16 +12,26 @@
 </head>
 
 <body>
-    <nav>
+    <nav class="navbar">
         <ul>
-            <li>k</li>
-            <li></li>
+            <li><a href="#home"><span class="mirror logo">K</span></a></li>
+            <!-- <li><a href="#signin">Sign in</a></li> -->
         </ul>
     </nav>
+    <form class="res-form" action="">
+            <fieldset>
+                <legend>res</legend>
+                <label for="username-input">Username</label>
+                <input class="res-form-field" id="res-username-input" type="text" placeholder="Type your username"><br>
+                <label for="password-input">Password</label>
+                <input class="res-form-field" id="res-password-input" type="password" placeholder="Type your password"><br>
+                <button class="res-btn">Signup</button>
+            </fieldset>
+        </form>
     <main role="main">
-        <div class="landing">
-            <h1><span class="mirror">K</span>ronicles</h1>
-            <p>view a series of events as they occur in your area. Or you can share your experience with others</p>
+        <div class="landing" id="home">
+            <!-- <h1><span class="mirror">K</span>ronicles</h1>
+            <p>view a series of events as they occur in your area. Or you can share your experience with others</p> -->
             <div class="row">
                 <div class="column">
                     <img src="/imgs/indoors.jpg" alt="">
@@ -40,7 +50,7 @@
                     <h3>Explore</h3>
                 </div>
             </div>
-            <section class="login-section">
+            <section class="login-section" id="signin">
                 <h2>Login to SHARE. FIND. CONNECT. and EXPLORE!</h2>
                 <form class="login-form" action="">
                     <fieldset>
@@ -51,11 +61,12 @@
                         <input class="login-form-field" id="password-input" type="password" placeholder="Type your password"><br>
                         <button class="login-btn">Login</button>
                     </fieldset>
-                    <button></button>
                     <a class="guest-login">use guest account</a>
                 </form>
             </section>
         </div>
+
+
 
         <div class="findTripsPage hide">
 
@@ -100,12 +111,14 @@
                     <input type="hidden" id="post-form-id">
                 </fieldset>
                 <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
-                <button class="trip-report-form-btn close-trip-report-form-btn">Close</button>
+                <button class="trip-report-form-btn close-trip-report-form-btn" type="reset" role="button">Close</button>
             </form>
 
         </div>
     </main>
-    <footer>&copy; 2019 REIGN</footer>
+    <footer>
+        <p>&copy; 2019 <span class="myname">Angelo Martin</span></p>
+    </footer>
     <!-- js script links -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>

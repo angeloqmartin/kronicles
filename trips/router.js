@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 router.post("/", (req,res) => {
     return TripReport.create(req.body)
     .then(data => {
-        res.json(data).status(201)
+        res.status(201).json(data)
     })
 })
 router.delete("/:id", (req, res) => {

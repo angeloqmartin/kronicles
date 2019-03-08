@@ -22,7 +22,9 @@ function showPostForm() {
     $(".post-btn").on("click", function () {
         $(".post-trip-report-form").show();
         $("#post-form-id").val("");
-
+        $("#post-form-title").val("");
+        $("#post-form-content").val("");
+        $("#post-form-postal-code").val("");
     })
 }
 
@@ -44,22 +46,68 @@ function useGuestAccount() {
 }
 
 function loginHandler() {
-    $(".login-btn").on("click", function (e) {
+    $(".login-form").on("submit", function (e) {
         e.preventDefault();
-        hideLandingPage();
-        showfindTripsPage();
+        const user = {
+            username: $("#username-input").val(),
+            password: $("#password-input").val()
+        }
+        fetch(`http://localhost:8080/auth/login`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(user => {
+            localStorage.authToken = user.authToken;
+            console.log(user)
+            hideLandingPage();
+            showfindTripsPage();    
+        })
     })
 }
 
 function closePostFormBtn() {
     $(".close-trip-report-form-btn").on("click", function (e) {
+        e.preventDefault();
         hidePostForm();
+    })
+}
+
+function emptyPostForm(){
+    $("#post-form-title").empty(),
+    $("#post-form-content").empty()
+}
+
+function resUser() {
+    $(".res-form").on("submit",function(e){
+        e.preventDefault();
+        console.log("submitted")
+        const user = {
+            username: $("#res-username-input").val(),
+            password: $("#res-password-input").val()
+        }
+        fetch(`http://localhost:8080/users`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(user => {
+            console.log(user)
+        })
+
     })
 }
 
 function submitTripForm() {
     $(".post-trip-report-form").on("submit", function (e) {
         e.preventDefault();
+        hidePostForm();
         const tripReport = {
             title: $("#post-form-title").val(),
             postalCode: $("#post-form-postal-code").val(),
@@ -74,6 +122,7 @@ function submitTripForm() {
                 method: "put",
                 body: JSON.stringify(tripReport),
                 headers: {
+                    authorization: "bearer " + localStorage.authToken,
                     "content-type": "application/json"
                 }
             })
@@ -93,6 +142,7 @@ function submitTripForm() {
             })
         }
     })
+    emptyPostForm();
 }
 
 function getTrips() {
@@ -109,8 +159,7 @@ function getTrips() {
                     <h3 class="user-content-header">${element.title}</h3>
                     <div class="js-trip-container">
                         <p class="js-container-content">${element.content}</p>
-                        <p class="js-post-form-postal-code">${element.postalCode}</p>
-                        <p class="js-post-form-postal-code">${element.category}</p>
+                        <p class="js-container-category">${element.category}</p>
                     </div>
                     <button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
                     <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
@@ -156,4 +205,5 @@ $(function () {
     editTripReportformBtn();
     useGuestAccount();
     loginHandler();
+    resUser();
 });

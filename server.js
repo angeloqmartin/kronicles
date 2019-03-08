@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const {jwtStrategy, localStrategy} = require('./auth/strategies')
 mongoose.Promise = global.Promise;
 
 const {
@@ -17,13 +18,21 @@ const {
 
 const app = express();
 app.use(morgan('common'));
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 const tripReportRouter = require("./trips/router")
+const {router: usersRouter} = require("./users/router")
+const {router: authRouter} = require("./auth/router")
+
 app.use(express.static('public'));
 app.use(express.json());
 
 //import router and route requests to HTTP requests
 app.use("/trip-report", tripReportRouter);
+app.use("/users", usersRouter);
+app.use("/auth", authRouter);
+
 
 //closeServer needs access to a server object but
 //only get created when 'runServer' runs, so server is declar here
