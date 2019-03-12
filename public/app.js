@@ -1,9 +1,10 @@
 "use strict";
 
 let STORE = {
-    trips: [
-    ]
+    allTrips: [],
+    trips: []
 }
+
 
 function hideLandingPage() {
     $(".landing").hide();
@@ -12,10 +13,13 @@ function hideLandingPage() {
 function hiddenElements() {
     hidePostForm();
     closePostFormBtn();
+    hideRegisterForm()
+    closeRegisterForm()
 }
 
 function showElements() {
     showPostForm();
+    openRegisterForm();
 };
 
 function showPostForm() {
@@ -36,6 +40,27 @@ function showfindTripsPage() {
     $(".findTripsPage").removeClass("hide")
 }
 
+function hideRegisterForm() {
+    $(".res-Modal").hide();
+}
+
+function openRegisterForm() {
+    $('.resBtn').on('click', function (e) {
+        e.preventDefault();
+        $("#res-username-input").val("");
+        $("#res-password-input").val("");
+        $(".res-Modal").show();
+    })
+}
+
+
+function closeRegisterForm() {
+    $('.close-res-form').on('click', function (e) {
+        e.preventDefault();
+        hideRegisterForm();
+    })
+}
+
 function useGuestAccount() {
     const username = "guest"
     const password = "pa$$w0rd"
@@ -48,26 +73,42 @@ function useGuestAccount() {
 function loginHandler() {
     $(".login-form").on("submit", function (e) {
         e.preventDefault();
+        const loggedInUser = $("#username-input").val();
         const user = {
             username: $("#username-input").val(),
             password: $("#password-input").val()
         }
         fetch(`http://localhost:8080/auth/login`, {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-                "content-type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(user => {
-            localStorage.authToken = user.authToken;
-            console.log(user)
-            hideLandingPage();
-            showfindTripsPage();    
-        })
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(user => {
+                localStorage.authToken = user.authToken;
+                hideLandingPage();
+                showfindTripsPage();
+                welcomeLoggedInUser(loggedInUser)
+            })
     })
 }
+
+function welcomeLoggedInUser(loggedInUser) {
+    $(".nav-sigin").hide()
+    $(".js-user-welcome").append(
+        `<li>Welcome, ${loggedInUser}!</li>
+        <li><button class="logout-btn">logout</button></li>`
+    )
+};
+
+function logOut() {
+    $(".js-user-welcome").on("click", "button", function () {
+        console.log('logged out clicked');
+        location.reload();
+    })
+};
 
 function closePostFormBtn() {
     $(".close-trip-report-form-btn").on("click", function (e) {
@@ -76,31 +117,47 @@ function closePostFormBtn() {
     })
 }
 
-function emptyPostForm(){
+function emptyPostForm() {
     $("#post-form-title").empty(),
-    $("#post-form-content").empty()
+        $("#post-form-content").empty()
 }
 
 function resUser() {
-    $(".res-form").on("submit",function(e){
+    $(".res-form").on("submit", function (e) {
         e.preventDefault();
-        console.log("submitted")
         const user = {
             username: $("#res-username-input").val(),
             password: $("#res-password-input").val()
         }
         fetch(`http://localhost:8080/users`, {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-                "content-type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(user => {
-            console.log(user)
-        })
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(user => {
+                console.log(user)
+            })
 
+    })
+}
+
+function findTripReports() {
+    $(".pos-trip-report-form").on("click", function (e) {
+        e.preventDefault();
+        const category = $("#selected-categories").val();
+        const location = $("#selected-location").val();
+        STORE.trips = STORE.allTrips.filter((trip) => {
+            if (trip.category === category || category === "all") {
+                if (!location || trip.postalCode === location) {
+                    return true
+                }
+            }
+            return false;
+        })
+        renderTrips();
     })
 }
 
@@ -119,27 +176,27 @@ function submitTripForm() {
         if (id) {
             tripReport.id = id;
             fetch(`http://localhost:8080/trip-report/${id}`, {
-                method: "put",
-                body: JSON.stringify(tripReport),
-                headers: {
-                    authorization: "bearer " + localStorage.authToken,
-                    "content-type": "application/json"
-                }
-            })
-            .then(data => {
-                getTrips();
-            })
+                    method: "put",
+                    body: JSON.stringify(tripReport),
+                    headers: {
+                        authorization: "bearer " + localStorage.authToken,
+                        "content-type": "application/json"
+                    }
+                })
+                .then(data => {
+                    getTrips();
+                })
         } else {
             fetch("http://localhost:8080/trip-report", {
-                method: "post",
-                body: JSON.stringify(tripReport),
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
-            .then(data => {
-                getTrips();
-            })
+                    method: "post",
+                    body: JSON.stringify(tripReport),
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                })
+                .then(data => {
+                    getTrips();
+                })
         }
     })
     emptyPostForm();
@@ -152,20 +209,26 @@ function getTrips() {
         })
         .then(trips => {
             STORE.trips = trips;
-            $("#js-tripReports-container").empty();
-            trips.forEach(element => {
-                $("#js-tripReports-container").append(
-                    `<div class="js-user-contain-grid">
-                    <h3 class="user-content-header">${element.title}</h3>
-                    <div class="js-trip-container">
-                        <p class="js-container-content">${element.content}</p>
-                        <p class="js-container-category">${element.category}</p>
-                    </div>
-                    <button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
-                    <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
-                    </div>`)
-            });
+            STORE.allTrips = trips;
+            renderTrips()
         })
+}
+
+function renderTrips() {
+    $("#js-tripReports-container").empty();
+    STORE.trips.forEach(element => {
+        $("#js-tripReports-container").append(
+            `<div class="js-user-contain-grid">
+            <h3 class="user-content-header">${element.title}</h3>
+            <div class="js-trip-container">
+                <p class="js-container-content">${element.content}</p>
+                <p class="js-container-category">${element.category}</p>
+            </div>
+            <button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
+            <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
+            </div>`)
+    });
+
 }
 
 function deleteTripsReportBtn() {
@@ -183,7 +246,6 @@ function deleteTripsReportBtn() {
 function editTripReportformBtn() {
     $("#js-tripReports-container").on("click", ".edit-trip-report-btn", function (e) {
         e.preventDefault();
-        console.log("edit button button clicked")
         $(".post-trip-report-form").show();
         const id = $(event.target).data("id")
         const tripFound = STORE.trips.find((trip) => trip._id == id);
@@ -206,4 +268,6 @@ $(function () {
     useGuestAccount();
     loginHandler();
     resUser();
+    findTripReports();
+    logOut();
 });

@@ -15,23 +15,32 @@
     <nav class="navbar">
         <ul>
             <li><a href="#home"><span class="mirror logo">K</span></a></li>
-            <!-- <li><a href="#signin">Sign in</a></li> -->
+            <div class="nav-sigin">
+                <li><a href="#signin" class="nav-signin-btn">Sign in</a></li>
+                <li><a href="#signin"><button class="resBtn resBtnstyle">Register</button></a></li>
+            </div>
+            <div class="js-user-welcome"></div>
         </ul>
     </nav>
-    <form class="res-form" action="">
-            <fieldset>
-                <legend>res</legend>
-                <label for="username-input">Username</label>
-                <input class="res-form-field" id="res-username-input" type="text" placeholder="Type your username"><br>
-                <label for="password-input">Password</label>
-                <input class="res-form-field" id="res-password-input" type="password" placeholder="Type your password"><br>
-                <button class="res-btn">Signup</button>
-            </fieldset>
-        </form>
     <main role="main">
+        <div class="res-Modal" id="resModal">
+            <form class="res-form" action="#">
+                <fieldset>
+                    <legend>REGISTER</legend>
+                    <p>SIGNUP NOW AND FIND THINS TO DO IN YOUR AREA!</p>
+                    <label for="username-input">Username:</label><br>
+                    <input class="res-form-field" id="res-username-input" type="text" placeholder="username" required><br>
+                    <label for="password-input">Password:</label><br>
+                    <input class="res-form-field" id="res-password-input" type="password" placeholder="password"
+                        required><br>
+                    <button class="res-btn">SUBMIT</button>
+                    <button class="close-res-form">CLOSE</button>
+                </fieldset>
+            </form>
+        </div>
         <div class="landing" id="home">
-            <!-- <h1><span class="mirror">K</span>ronicles</h1>
-            <p>view a series of events as they occur in your area. Or you can share your experience with others</p> -->
+            <h1>Welcome to <span class="mirror">K</span>ronicles</h1>
+            <p>SHARE YOUR EXPERIENCES WITH OTHERS OR VIEW A SERIES OF EVENTS AS THEY OCCUR IN YOUR AREA.</p>
             <div class="row">
                 <div class="column">
                     <img src="/imgs/indoors.jpg" alt="">
@@ -56,38 +65,38 @@
                     <fieldset>
                         <legend>Login</legend>
                         <label for="username-input">Username</label>
-                        <input class="login-form-field" id="username-input" type="text" placeholder="Type your username"><br>
+                        <input class="login-form-field" id="username-input" type="text" placeholder="Type your username"
+                            required><br>
                         <label for="password-input">Password</label>
-                        <input class="login-form-field" id="password-input" type="password" placeholder="Type your password"><br>
+                        <input class="login-form-field" id="password-input" type="password" placeholder="Type your password"
+                            required><br>
                         <button class="login-btn">Login</button>
                     </fieldset>
-                    <a class="guest-login">use guest account</a>
+                    <a class="guest-login login-link">use guest account</a><br>
+                    <span class="or">OR</span>
+                    <a class="resBtn login-link">Register a new account</a>
                 </form>
             </section>
         </div>
-
-
-
         <div class="findTripsPage hide">
-
-            <form role="form" action="#" class="seach-trip-report">
-                <fieldset>
-                    <legend>Search for things to do in your area</legend>
-                    <label for="categories">category:</label>
-                    <select class="search-field" name="categories" id="categories">
-                        <option value="all">all</option>
-                        <option value="outdoors">outdoors</option>
-                        <option value="indoors">indoors</option>
-                        <option value="food">food</option>
-                    </select><br>
-                    <label for="location">location:</label>
-                    <input class="search-field" role="searchbox" type="text" id="location" pattern="[0-9]{5}"
-                        placeholder="90210" title="Five digit zip code" required>
-                    <button class="search-btn" type="submit" role="button"><i class="arrow dir"></i></button>
-                </fieldset>
-            </form>
-
-            <h2 class="trip-suggestions">suggestions:</h2>
+            <div class="pos-trip-report-form ">
+                <form role="form" action="#" class="seach-trip-report">
+                    <fieldset>
+                        <legend>SEARCH for things to do in your area</legend>
+                        <label for="categories">category:</label>
+                        <select class="search-field select" id="selected-categories" name="categories" id="categories">
+                            <option value="all">ALL</option>
+                            <option value="outdoors">OUTDOORS</option>
+                            <option value="indoors">INDOORS</option>
+                            <option value="food">FOOD</option>
+                        </select><br>
+                        <label for="location">location:</label>
+                        <input class="search-field" id="selected-location" role="searchbox" type="text" id="location"
+                            pattern="[0-9]{5}" placeholder="90210" title="Five digit zip code">
+                        <button class="search-btn" type="submit" role="button">SEARCH<i class="arrow dir"></i></button>
+                    </fieldset>
+                </form>
+            </div>
             <div class="tripReport-container" id="js-tripReports-container"></div>
             <button class="post-btn position-post" name="post" type="button">POST</button>
 
@@ -113,7 +122,6 @@
                 <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
                 <button class="trip-report-form-btn close-trip-report-form-btn" type="reset" role="button">Close</button>
             </form>
-
         </div>
     </main>
     <footer>

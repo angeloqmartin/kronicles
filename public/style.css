@@ -4,8 +4,11 @@
 }
 
 h1 {
+    text-align: center;
+    font-weight: 900;
     font-family: 'Roboto', sans-serif;
-    font-size: 4em;
+    font-size: 8vw;
+    margin: 130px 0 0 0;
 }
 
 h2,
@@ -21,34 +24,148 @@ a {
     outline: none;
 }
 
-a:hover {
-    border-bottom: 1px solid black;
+.navbar {
+    border-bottom: 10px double rgb(250, 250, 250);
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.nav-sigin {
+    display: flex;
+}
+
+.js-user-welcome {
+    display: flex;
 }
 
 .navbar ul {
     display: flex;
     list-style-type: none;
-    justify-content: space-between;
-    padding: 15px;
-    text-decoration: none;
     margin: 0;
+    padding: 30px;
+}
+
+.navbar li:first-child {
+    margin-right: auto;
+}
+
+.navbar a {
+    display: block;
+    text-decoration: none;
+}
+
+.nav-signin-btn {
+    margin: 5px 20px 0 0;
 }
 
 .logo {
     border-style: solid;
     border-image:
         linear-gradient(to bottom,
-        red,
+        #FF2D00,
         rgba(0, 0, 0, 0)) 1 100%;
     padding: 10px;
     font: 900;
 }
 
-.navbar ul:last-child {
-    color: chartreuse;
-    font-size: 2em;
-    /* text-decoration: none; */
+.resBtnstyle {
+    padding: 5px;
+    border: none;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: rgb(85, 179, 88);
+    font-weight: bolder;
+    opacity: 0.6;
+    transition: 0.3s;
+}
 
+.resBtnstyle:hover {
+    opacity: 1;
+}
+
+.res-Modal {
+    z-index: 1;
+    /* Sit on top */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.res-form {
+    border: 6px solid rgb(255, 203, 197);
+    padding: 2em;
+    max-width: 400px;
+    margin: 50px auto;
+    height: auto;
+    text-align: center;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.res-form fieldset {
+    border: none;
+}
+
+.res-form legend {
+    font-size: 2.3em;
+    font-weight: bolder;
+}
+
+.res-form p {
+    font-size: 12px;
+    margin: 0 0 20px 0;
+}
+
+.res-form-field {
+    margin: 0 0 10px 0;
+    padding: 5px;
+}
+
+.resForm input {
+    margin: .8em auto;
+    font-family: inherit;
+    text-transform: inherit;
+    font-size: inherit;
+    display: block;
+    width: 280px;
+    padding: .4em;
+}
+
+
+.res-form button {
+    width: 140px;
+    margin-top: 20px;
+    display: inline-block;
+    background: teal;
+    color: #fff;
+    font-weight: 100;
+    font-size: 1.2em;
+    border: none;
+    height: 30px;
+}
+
+.landing {
+    background-color: rgba(255, 255, 255, 0.479);
 }
 
 .landing h2 {
@@ -58,10 +175,9 @@ a:hover {
 }
 
 .landing p {
+    font-size: 3vw;
     text-align: center;
-    /* padding: 20px; */
-    font-size: 2em;
-    font: 700;
+    margin: 50px 0;
 }
 
 header {
@@ -88,28 +204,15 @@ header {
     /* IE */
 }
 
-h1 {
-    margin: 10px;
-    font-weight: 900;
-    font-family: 'Roboto', sans-serif;
-}
-
 /* ----------------------------------------------------------------- */
 .landing-content {
     height: 100%;
 }
 
-.landing p {
-    max-width: 1200px;
-    margin: auto;
-}
-
 /* ----------------------------------------------------------------- */
 .row {
-    margin: 30px 0 0 0;
     display: flex;
-    background-color: rgb(245, 245, 245);
-
+    background-color: rgb(228, 228, 228);
 }
 
 .column {
@@ -130,6 +233,15 @@ h1 {
 }
 
 /* ----------------------------------------------------------------- */
+.logout-btn {
+    margin: 0 5px 0 20px;
+    padding: 0;
+    color: rgb(114, 114, 114)
+}
+
+.logout-btn:hover {
+    color: #FF2D00;
+}
 
 .login-section {
     background-color: #278BFF;
@@ -139,7 +251,7 @@ h1 {
 .login-section h2 {
     color: rgb(255, 255, 255);
     text-align: center;
-    /* padding: 100px; */
+    padding-top: 30px;
     margin: 0;
 }
 
@@ -164,6 +276,7 @@ h1 {
     text-align: center;
     font-size: 1.5em;
     margin: 50px;
+    color: FF2D00;
 }
 
 .login-form-field {
@@ -182,37 +295,76 @@ h1 {
     color: white;
     display: block;
     width: 50%;
-    margin: 10px auto 20px auto;
+    margin: 10px auto 50px auto;
     padding: 10px;
 }
 
-.guest-login {
-    float: right;
+.or {
+    display: inline-block;
+    margin: 15px 0 0 0;
+}
+
+.login-link {
     color: rgb(136, 45, 255);
-    border-bottom: 1px solid
+    border-bottom: 1px solid rgb(136, 45, 255);
+    margin-bottom: 10px;
+}
+
+.login-link:hover {
+    color: #278BFF;
+    border-bottom: 1px solid #278BFF;
+
 }
 
 /* ----------------------------------------------------------------- */
-/* .seach-trip-report fieldset {
-    margin-bottom: 20px;
-} */
+
+.tripReport-container {
+    margin: auto;
+    width: 100%;
+}
+
+.findTripsPage {
+    margin: 126px 0 0 0;
+}
+
+.pos-trip-report-form {
+    border-right: 1px solid rgb(224, 224, 224);
+}
+
+
+.seach-trip-report fieldset {
+    border: none;
+    padding: 30px;
+}
 
 .seach-trip-report legend {
     text-align: center;
+    font-size: 1.7em;
+    margin: 0 0 40px 0;
+    color: #FF2D00;
+    font-weight: 100;
+
 }
 
 .search-field {
-    width: 40%;
-    border: black solid 1px;
-    margin: 5px 0;
+    display: block;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: rgb(189, 189, 189);
+    width: 90%;
+    margin: 10px auto 40px;
+    padding: 10px;
+    text-align: center;
 }
 
 /* ----------------------------------------------------------------- */
 .search-btn {
     border: none;
-    text-decoration: none;
-    border-radius: 100%;
+    border-radius: 5%;
+    color: white;
     background-color: #278BFF;
+    padding: 10px;
+    width: 100%;
 }
 
 i {
@@ -220,14 +372,10 @@ i {
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
+    margin-left: 10px;
 }
 
 .dir {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-}
-
-.dir:hover {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
@@ -242,6 +390,7 @@ i {
 
 /* ----------------------------------------------------------------- */
 .js-user-contain-grid {
+    width: 100%;
     max-width: 900px;
     height: auto;
     margin: 0px auto 50px auto;
@@ -282,7 +431,7 @@ i {
 
 .js-container-category {
     font-size: 13px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(196, 196, 196);
     color: rgb(255, 255, 255);
     padding: 5px;
     border: solid rgb(228, 228, 228) 1px;
@@ -294,12 +443,15 @@ i {
 .delete-trip-report-btn {
     background-color: #FF2D00;
     color: white;
-    margin-left: 10px;
+    margin: 0 10px 20px 10px;
+    border: none;
 }
 
 .edit-trip-report-btn {
     background-color: rgb(85, 179, 88);
     color: white;
+    border: none;
+
 }
 
 /* ----------------------------------------------------------------- */
@@ -398,6 +550,13 @@ footer p {
     margin: 10px 0;
 }
 
+/* ----------------------------------------------------------------- */
+
+@media only screen and (max-width:360px) {
+    .row {
+        flex-direction: column;
+    }
+}
 
 @media only screen and (max-width:600px) {
     .row {
@@ -405,8 +564,17 @@ footer p {
     }
 }
 
-@media only screen and (max-width:360px) {
-    .row {
-        flex-direction: column;
+@media only screen and (min-width:678px) {
+    .pos-trip-report-form {
+        position: fixed;
+        width: 35%
+    }
+
+    .tripReport-container {
+        float: right;
+        width: 60%;
     }
 }
+
+
+/* add home or top button // maybe in footer */
