@@ -1,15 +1,9 @@
 "use strict";
+
 const apiURL = ""
 let STORE = {
     allTrips: [],
     trips: []
-}
-
-
-
-
-function hideLandingPage() {
-    $(".landing").hide();
 }
 
 function hiddenElements() {
@@ -29,12 +23,15 @@ function hideErrModel() {
     $(".err-modal").hide()
 }
 
+function hideLandingPage() {
+    $(".landing").hide();
+}
+
 function closeErrMessage() {
     $(".close").on("click", function () {
         hideErrModel();
         reloadPage();
     })
-
 }
 
 function reloadPage() {
@@ -69,11 +66,10 @@ function hideRegisterForm() {
 
 function showRegisterForm() {
     $(".res-Modal").show();
- 
 }
 
 function openRegisterForm() {
-    $('.resBtn').on('click', function (e) {
+    $(".resBtn").on("click", function (e) {
         e.preventDefault();
         $("#res-username-input").val("");
         $("#res-password-input").val("");
@@ -81,9 +77,8 @@ function openRegisterForm() {
     })
 }
 
-
 function closeRegisterForm() {
-    $('.close-res-form').on('click', function (e) {
+    $(".close-res-form").on("click", function (e) {
         e.preventDefault();
         hideRegisterForm();
     })
@@ -122,7 +117,7 @@ function loginCall(user) {
         .then(res => res.json())
         .then(newUser => {
             if (newUser.message) {
-                $('.login-section').append(newUser.message)
+                $(".login-section").append(newUser.message)
             } else {
                 localStorage.authToken = user.authToken;
                 hideRegisterForm();
@@ -164,8 +159,8 @@ function closePostFormBtn() {
 }
 
 function emptyPostForm() {
-    $("#post-form-title").empty(),
-        $("#post-form-content").empty()
+    $("#post-form-title").empty();
+    $("#post-form-content").empty()
 }
 
 function resUser() {
@@ -285,6 +280,13 @@ function renderTrips() {
             <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
             </div>`)
     });
+        // $("#js-tripReports-container").append(
+        //     `<div class="js-admin-contain-grid">
+        //     <h3 class="user-content-header">Test</h3>
+        //     <div class="js-admin-container">
+        //     <p class="js-container-content">Test</p>
+        //     </div>
+        //     </div>`)
 
 }
 

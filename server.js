@@ -4,7 +4,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
-const {jwtStrategy, localStrategy} = require('./auth/strategies')
+const {
+  jwtStrategy,
+  localStrategy
+} = require('./auth/strategies')
+
 mongoose.Promise = global.Promise;
 
 const {
@@ -22,8 +26,14 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 const tripReportRouter = require("./trips/router")
-const {router: usersRouter} = require("./users/router")
-const {router: authRouter} = require("./auth/router")
+
+const {
+  router: usersRouter
+} = require("./users/router")
+
+const {
+  router: authRouter
+} = require("./auth/router")
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -42,13 +52,11 @@ let server;
 // this function connects to our database, then starts server
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-    console.log(DATABASE_URL);
     mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
       }
       server = app.listen(port, () => {
-          console.log(`Your app is listening on port ${port}`);
           resolve();
         })
         .on('error', err => {
@@ -61,10 +69,9 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
 
 // this function closes the server, and returns a promise
 // will be used in CI test
- function closeServer() {
+function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
-      console.log('Closing server');
       server.close(err => {
         if (err) {
           return reject(err);

@@ -12,6 +12,7 @@ const chaiHttp = require("chai-http");
 const faker = require('faker');
 const mongoose = require('mongoose');
 const expect = chai.expect;
+
 // makes 'should' syntax available throughout module
 const should = chai.should();
 
@@ -78,9 +79,9 @@ describe('trip reports API resource', function () {
         return closeServer();
     });
 
-    describe('', function () {
+    describe('simple pre test', function () {
 
-        // test test - verifies that when you hit 
+        // test - verifies that when you hit 
         // up the root url you get a 200 status code and HTML
         it("should exist", function () {
             return chai
@@ -95,6 +96,7 @@ describe('trip reports API resource', function () {
     describe('GET endpoint', function () {
 
         it('should return all existing post', function () {
+
             // strategy
             //// 1. get back all post returned by GET request to '/posts'
             //// 2. prove res has right status, data type
@@ -105,9 +107,8 @@ describe('trip reports API resource', function () {
                 .then(_res => {
                     res = _res;
                     res.should.have.status(200);
-                    //----- expected {} to have property 'length' -----
-                    // res.body.should.have.lengthOf.at.least(1);
-                    // return TripReport.count();
+                    res.body.should.have.lengthOf.at.least(1);
+                    return TripReport.count();
                 })
         });
 
@@ -121,12 +122,12 @@ describe('trip reports API resource', function () {
                     res.should.have.status(200);
                     res.should.be.json;
                     res.body.should.be.a('array');
-                    //check trips that its value match with those in db
                 })
         });
     });
 
     describe('POST endpoint', function () {
+
         // strategy: make a POST request with data,
         // then prove that the post we get back has
         // right keys, and that `id` is there
@@ -140,14 +141,13 @@ describe('trip reports API resource', function () {
                 .post('/trip-report')
                 .send(newTrip)
                 .then(function (res) {
-                    //---- AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code 201 but got 404 ----
                     res.should.have.status(201);
-                    //----- AssertionError: expected 'text/html; charset=UTF-8' to include 'application/json' -----
-                    // res.should.be.json;
+                    res.should.be.json;
                 });
         });
     });
     describe('PUT endpoint', function () {
+
         //strategy:
         // 1. Get an existing post from db
         // 2. Make a PUT request to update post
@@ -161,28 +161,25 @@ describe('trip reports API resource', function () {
                 .findOne()
                 .then(post => {
                     updateData.id = post._id;
-
                     return chai.request(app)
                         .put(`/trip-report/${post._id}`)
                         .send(updateData)
                 })
                 .then(res => {
-                    //---- AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code 204 but got 404 -----
                     res.should.have.status(200);
                     return TripReport.findById(updateData.id)
                 })
         })
     });
     describe('DELETE endpoint', function () {
+
         //strategy:
         //1. get a post
         //2. make a DELETE request for the post's id
         //3. assert response has right status code
         //4. prove that post with the id doen't exist in db anymore
         it('should delete a post id', function () {
-
             let post;
-
             return TripReport
                 .findOne()
                 .then(_post => {
@@ -190,14 +187,12 @@ describe('trip reports API resource', function () {
                     return chai.request(app).delete(`/trip-report/${post.id}`);
                 })
                 .then(res => {
-                    //----AssertionError: expected { Object (_events, _eventsCount, ...) } to have status code 204 but got 404 ----
                     res.should.have.status(200);
                     return TripReport.findById(post.id)
                 })
-            //----AssertionError: expected { Object ($__, isNew, ...) } to not exist ----
-            // .then(_post => {
-            //     should.not.exist(_post);
-            // });
+            .then(_post => {
+                should.not.exist(_post);
+            });
         });
     });
 });

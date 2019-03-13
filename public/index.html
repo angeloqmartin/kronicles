@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <nav class="navbar">
         <ul>
             <li><a href="#home"><span class="mirror logo">K</span></a></li>
@@ -22,7 +23,9 @@
             <div class="js-user-welcome"></div>
         </ul>
     </nav>
+
     <main role="main">
+
         <div class="res-Modal" id="resModal">
             <form class="res-form" action="#">
                 <fieldset>
@@ -38,30 +41,34 @@
                 </fieldset>
             </form>
         </div>
+
         <div class="landing" id="home">
             <h1>Welcome to <span class="mirror">K</span>ronicles</h1>
             <h2>SHARE YOUR EXPERIENCES WITH OTHERS OR VIEW A SERIES OF EVENTS AS THEY OCCUR IN YOUR AREA.</h2>
+
             <div class="row">
                 <div class="column">
-                    <img src="/imgs/indoors.jpg" alt="">
+                    <img src="/imgs/indoors.jpg" alt="glow in the dark bowling alley">
                     <h3>Indoors</h3>
                 </div>
                 <div class="column">
-                    <img src="/imgs/outdoors.jpg" alt="">
+                    <img src="/imgs/outdoors.jpg" alt="hiking trail in forest">
                     <h3>Outdoors</h3>
                 </div>
                 <div class="column">
-                    <img src="/imgs/paintFestival.jpg" alt="">
+                    <img src="/imgs/paintFestival.jpg" alt="people throwing paint at a festival">
                     <h3>Events</h3>
                 </div>
                 <div class="column">
-                    <img src="/imgs/explore.jpg" alt="">
+                    <img src="/imgs/explore.jpg" alt="mysteries dark cave">
                     <h3>Explore</h3>
                 </div>
             </div>
+
             <section class="login-section" id="signin">
-                <!-- Error Modal -->
-                <div id="myModal" class="err-modal"></div>
+                <div id="myModal" class="err-modal">
+                    <!-- Error Modal Placholder -->
+                </div>
                 <h2>Login to SHARE. FIND. CONNECT. and EXPLORE!</h2>
                 <form class="login-form" action="">
                     <fieldset>
@@ -80,7 +87,9 @@
                 </form>
             </section>
         </div>
+
         <div class="findTripsPage hide">
+
             <div class="pos-trip-report-form ">
                 <form role="form" action="#" class="seach-trip-report">
                     <fieldset>
@@ -99,7 +108,10 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="tripReport-container" id="js-tripReports-container"></div>
+
+            <div class="tripReport-container" id="js-tripReports-container">
+                <!-- Trip Report Container -->
+            </div>
             <button class="post-btn position-post" name="post" type="button">POST</button>
 
             <form class="post-trip-report-form position-post" id="trip-report-form" role="form">
@@ -124,15 +136,19 @@
                 <button class="trip-report-form-btn submit-trip-report-form-btn" type="submit" role="button">Post Trip</button>
                 <button class="trip-report-form-btn close-trip-report-form-btn" type="reset" role="button">Close</button>
             </form>
+
         </div>
     </main>
+
     <footer>
         <p>&copy; 2019 <span class="myname">Angelo Martin</span></p>
     </footer>
+
     <!-- js script links -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
+
 </body>
 
 </html>

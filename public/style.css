@@ -1,9 +1,7 @@
-/* ----------------------------------------------------------------- */
 .hide {
     display: none;
 }
 
-/* ----------------------------------------------------------------- */
 .err-modal {
     position: fixed;
     /* Stay in place */
@@ -25,7 +23,6 @@
     /* Black w/ opacity */
 }
 
-/* Modal Content */
 .err-modal-content {
     background-color: #fefefe;
     color: red;
@@ -40,7 +37,6 @@
     font-weight: 900;
 }
 
-/* The Close Button */
 .close {
     color: #aaaaaa;
     float: right;
@@ -56,12 +52,12 @@
 }
 
 /* ----------------------------------------------------------------- */
-
 h1 {
     text-align: center;
     font-weight: 900;
     font-family: 'Roboto', sans-serif;
     margin: 130px 0 0 0;
+    font-size: 10vw;
 }
 
 h2,
@@ -204,7 +200,6 @@ a {
     padding: .4em;
 }
 
-
 .res-form button {
     width: 140px;
     margin-top: 20px;
@@ -251,12 +246,10 @@ header {
     /* IE */
 }
 
-/* ----------------------------------------------------------------- */
 .landing-content {
     height: 100%;
 }
 
-/* ----------------------------------------------------------------- */
 .row {
     display: flex;
     background-color: rgb(228, 228, 228);
@@ -279,7 +272,6 @@ header {
     background-color: rgb(255, 255, 255);
 }
 
-/* ----------------------------------------------------------------- */
 .logout-btn {
     margin: 0 5px 0 20px;
     padding: 0;
@@ -365,8 +357,6 @@ header {
 
 }
 
-/* ----------------------------------------------------------------- */
-
 .tripReport-container {
     margin: auto;
     width: 100%;
@@ -392,7 +382,6 @@ header {
     margin: 0 0 40px 0;
     color: #FF2D00;
     font-weight: 100;
-
 }
 
 .search-field {
@@ -406,7 +395,6 @@ header {
     text-align: center;
 }
 
-/* ----------------------------------------------------------------- */
 .search-btn {
     border: none;
     color: white;
@@ -428,7 +416,6 @@ i {
     -webkit-transform: rotate(-45deg);
 }
 
-/* ----------------------------------------------------------------- */
 .trip-suggestions {
     margin: 50px 0;
     display: block;
@@ -436,8 +423,14 @@ i {
     color: #EFEFEF;
 }
 
-/* ----------------------------------------------------------------- */
 .js-user-contain-grid {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0px auto 50px auto;
+}
+
+.js-admin-contain-grid {
     width: 100%;
     max-width: 900px;
     height: auto;
@@ -502,7 +495,6 @@ i {
 
 }
 
-/* ----------------------------------------------------------------- */
 .post-btn {
     background-color: #278BFF;
     color: #FFFFFF;
@@ -533,7 +525,6 @@ i {
     -moz-box-sizing: content-box !important;
 }
 
-/* ----------------------------------------------------------------- */
 .post-trip-report-form {
     max-width: 300px;
     height: auto;
@@ -582,7 +573,6 @@ i {
     color: white;
 }
 
-/* ----------------------------------------------------------------- */
 footer {
     display: block;
     position: fixed;
@@ -598,7 +588,38 @@ footer p {
     margin: 10px 0;
 }
 
-/* ----------------------------------------------------------------- */
+ /* admins posted trips */
+.js-admin-contain-grid {
+    max-width: 900px;
+    height: auto;
+    margin: 0px auto;
+}
+.js-admin-container {
+    position: relative;
+    max-width: 900px;
+    height: auto;
+    border: rgb(184, 184, 184) 1px solid;
+    border-top: #5BC236 5px solid;
+    margin: 0 auto 100px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.js-admin-container::after {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-top: 0px solid rgb(184, 184, 184);
+    border-right: 1px solid rgb(184, 184, 184);
+    border-bottom: 1px solid rgb(184, 184, 184);
+    border-left: 0px solid rgb(184, 184, 184);
+    top: 100%;
+    left: 30%;
+    margin-left: -25px;
+    transform: rotate(45deg);
+    margin-top: -25px;
+    background-color: white;
+    content: '';
+}
 
 @media only screen and (max-width:360px) {
     .row {

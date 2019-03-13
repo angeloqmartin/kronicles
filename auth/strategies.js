@@ -1,4 +1,5 @@
 'use strict';
+
 const {
     Strategy: LocalStrategy
 } = require('passport-local');
@@ -11,6 +12,7 @@ const {
 const {
     User
 } = require('../users/models');
+
 const {
     JWT_SECRET
 } = require('../config');
