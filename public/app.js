@@ -1,5 +1,5 @@
 "use strict";
-
+const apiURL = ""
 let STORE = {
     allTrips: [],
     trips: []
@@ -78,7 +78,7 @@ function loginHandler() {
             username: $("#username-input").val(),
             password: $("#password-input").val()
         }
-        fetch(`http://localhost:8080/auth/login`, {
+        fetch(`/auth/login`, {
                 method: "POST",
                 body: JSON.stringify(user),
                 headers: {
@@ -129,7 +129,7 @@ function resUser() {
             username: $("#res-username-input").val(),
             password: $("#res-password-input").val()
         }
-        fetch(`http://localhost:8080/users`, {
+        fetch(`/users`, {
                 method: "POST",
                 body: JSON.stringify(user),
                 headers: {
@@ -175,7 +175,7 @@ function submitTripForm() {
         const id = $("#post-form-id").val();
         if (id) {
             tripReport.id = id;
-            fetch(`http://localhost:8080/trip-report/${id}`, {
+            fetch(`/trip-report/${id}`, {
                     method: "put",
                     body: JSON.stringify(tripReport),
                     headers: {
@@ -187,7 +187,7 @@ function submitTripForm() {
                     getTrips();
                 })
         } else {
-            fetch("http://localhost:8080/trip-report", {
+            fetch("/trip-report", {
                     method: "post",
                     body: JSON.stringify(tripReport),
                     headers: {
@@ -203,7 +203,7 @@ function submitTripForm() {
 }
 
 function getTrips() {
-    fetch("http://localhost:8080/trip-report")
+    fetch("/trip-report")
         .then(response => {
             return response.json();
         })
@@ -234,7 +234,7 @@ function renderTrips() {
 function deleteTripsReportBtn() {
     $("#js-tripReports-container").on("click", ".delete-trip-report-btn", function (event) {
         const id = $(event.target).data("id")
-        fetch(`http://localhost:8080/trip-report/${id}`, {
+        fetch(`/trip-report/${id}`, {
                 method: "delete"
             })
             .then(() => {
