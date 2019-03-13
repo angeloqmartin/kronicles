@@ -3,11 +3,64 @@
     display: none;
 }
 
+/* ----------------------------------------------------------------- */
+.err-modal {
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.err-modal-content {
+    background-color: #fefefe;
+    color: red;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+}
+
+.err-modal-content p {
+    margin: 30px 0 !important;
+    font-weight: 900;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------------- */
+
 h1 {
     text-align: center;
     font-weight: 900;
     font-family: 'Roboto', sans-serif;
-    font-size: 8vw;
     margin: 130px 0 0 0;
 }
 
@@ -170,12 +223,6 @@ a {
 
 .landing h2 {
     padding: 10px;
-    font-size: 2.5em;
-    font: bolder;
-}
-
-.landing p {
-    font-size: 3vw;
     text-align: center;
     margin: 50px 0;
 }
@@ -236,7 +283,9 @@ header {
 .logout-btn {
     margin: 0 5px 0 20px;
     padding: 0;
-    color: rgb(114, 114, 114)
+    color: rgb(114, 114, 114);
+    border: none;
+    text-decoration: none;
 }
 
 .logout-btn:hover {
@@ -250,9 +299,9 @@ header {
 
 .login-section h2 {
     color: rgb(255, 255, 255);
-    text-align: center;
     padding-top: 30px;
     margin: 0;
+    font-size: 2em;
 }
 
 .login-form {
@@ -360,7 +409,6 @@ header {
 /* ----------------------------------------------------------------- */
 .search-btn {
     border: none;
-    border-radius: 5%;
     color: white;
     background-color: #278BFF;
     padding: 10px;
@@ -565,16 +613,24 @@ footer p {
 }
 
 @media only screen and (min-width:678px) {
+    h1 {
+        font-size: 10vw;
+    }
     .pos-trip-report-form {
         position: fixed;
         width: 35%
     }
-
+    
     .tripReport-container {
         float: right;
         width: 60%;
     }
 }
 
+@media only screen and (min-width:1018px) {
+    h1 {
+        font-size: 7vw;
+    }
+}
 
-/* add home or top button // maybe in footer */
+

@@ -6,6 +6,8 @@ let STORE = {
 }
 
 
+
+
 function hideLandingPage() {
     $(".landing").hide();
 }
@@ -13,14 +15,35 @@ function hideLandingPage() {
 function hiddenElements() {
     hidePostForm();
     closePostFormBtn();
-    hideRegisterForm()
-    closeRegisterForm()
+    hideRegisterForm();
+    closeRegisterForm();
+    hideErrModel();
 }
 
 function showElements() {
     showPostForm();
     openRegisterForm();
 };
+
+function hideErrModel() {
+    $(".err-modal").hide()
+}
+
+function closeErrMessage() {
+    $(".close").on("click", function () {
+        hideErrModel();
+        reloadPage();
+    })
+
+}
+
+function reloadPage() {
+    location.reload();
+}
+
+function showErrModal() {
+    $(".err-modal").show()
+}
 
 function showPostForm() {
     $(".post-btn").on("click", function () {
@@ -44,12 +67,17 @@ function hideRegisterForm() {
     $(".res-Modal").hide();
 }
 
+function showRegisterForm() {
+    $(".res-Modal").show();
+ 
+}
+
 function openRegisterForm() {
     $('.resBtn').on('click', function (e) {
         e.preventDefault();
         $("#res-username-input").val("");
         $("#res-password-input").val("");
-        $(".res-Modal").show();
+        showRegisterForm();
     })
 }
 
@@ -78,21 +106,40 @@ function loginHandler() {
             username: $("#username-input").val(),
             password: $("#password-input").val()
         }
-        fetch(`/auth/login`, {
-                method: "POST",
-                body: JSON.stringify(user),
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
-            .then(res => res.json())
-            .then(user => {
+        loginCall(user);
+        welcomeLoggedInUser(loggedInUser)
+    })
+}
+
+function loginCall(user) {
+    fetch(`/auth/login`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(newUser => {
+            if (newUser.message) {
+                $('.login-section').append(newUser.message)
+            } else {
                 localStorage.authToken = user.authToken;
+                hideRegisterForm();
                 hideLandingPage();
                 showfindTripsPage();
-                welcomeLoggedInUser(loggedInUser)
-            })
-    })
+            }
+        })
+        .catch(err => {
+            $(".err-modal").append(
+                `<div class="err-modal-content">
+                <span class="close">&times;</span>
+                <p>The username and or password you entered is incorrect.<br><br>Please try again.</p>
+                </div>`
+            )
+            showErrModal();
+            closeErrMessage();
+        })
 }
 
 function welcomeLoggedInUser(loggedInUser) {
@@ -105,8 +152,7 @@ function welcomeLoggedInUser(loggedInUser) {
 
 function logOut() {
     $(".js-user-welcome").on("click", "button", function () {
-        console.log('logged out clicked');
-        location.reload();
+        reloadPage();
     })
 };
 
@@ -137,10 +183,21 @@ function resUser() {
                 }
             })
             .then(res => res.json())
-            .then(user => {
-                console.log(user)
+            .then(newUser => {
+                if (newUser.message) {
+                    hideRegisterForm();
+                    $(".err-modal").append(
+                        `<div class="err-modal-content">
+                        <span class="close">&times;</span>
+                        <p>Sorry, ${newUser.message}.<br><br>Please try a different username.</p>
+                        </div>`
+                    )
+                    showErrModal();
+                    closeErrMessage();
+                } else {
+                    loginCall(user);
+                }
             })
-
     })
 }
 
