@@ -191,6 +191,7 @@ function resUser() {
                     closeErrMessage();
                 } else {
                     loginCall(user);
+                    welcomeLoggedInUser(user.username);
                 }
             })
     })
