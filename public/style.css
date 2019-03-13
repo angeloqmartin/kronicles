@@ -306,7 +306,7 @@ header {
 
 .login-form {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 50px auto 70px auto;
     height: auto;
     background-color: white;
     border: rgb(233, 233, 233) 2px solid;
@@ -616,11 +616,12 @@ footer p {
     h1 {
         font-size: 10vw;
     }
+
     .pos-trip-report-form {
         position: fixed;
         width: 35%
     }
-    
+
     .tripReport-container {
         float: right;
         width: 60%;
@@ -632,5 +633,3 @@ footer p {
         font-size: 7vw;
     }
 }
-
-
