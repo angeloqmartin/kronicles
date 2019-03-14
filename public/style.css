@@ -437,6 +437,40 @@ i {
     margin: 0px auto 50px auto;
 }
 
+.js-admin-contain-grid {
+    max-width: 900px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.js-admin-container {
+    position: relative;
+    max-width: 900px;
+    height: auto;
+    border: rgb(184, 184, 184) 1px solid;
+    border-top: #5BC236 5px solid;
+    margin: 0 auto 100px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.js-admin-container::after {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-top: 0px solid rgb(184, 184, 184);
+    border-right: 1px solid rgb(184, 184, 184);
+    border-bottom: 1px solid rgb(184, 184, 184);
+    border-left: 0px solid rgb(184, 184, 184);
+    top: 100%;
+    left: 30%;
+    margin-left: -25px;
+    transform: rotate(45deg);
+    margin-top: -25px;
+    background-color: white;
+    content: '';
+}
+
 .js-user-contain-grid h3 {
     text-align: right;
     margin: 0 10px;
@@ -586,39 +620,6 @@ footer {
 
 footer p {
     margin: 10px 0;
-}
-
- /* admins posted trips */
-.js-admin-contain-grid {
-    max-width: 900px;
-    height: auto;
-    margin: 0px auto;
-}
-.js-admin-container {
-    position: relative;
-    max-width: 900px;
-    height: auto;
-    border: rgb(184, 184, 184) 1px solid;
-    border-top: #5BC236 5px solid;
-    margin: 0 auto 100px auto;
-    padding: 30px;
-    box-sizing: border-box;
-}
-.js-admin-container::after {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-top: 0px solid rgb(184, 184, 184);
-    border-right: 1px solid rgb(184, 184, 184);
-    border-bottom: 1px solid rgb(184, 184, 184);
-    border-left: 0px solid rgb(184, 184, 184);
-    top: 100%;
-    left: 30%;
-    margin-left: -25px;
-    transform: rotate(45deg);
-    margin-top: -25px;
-    background-color: white;
-    content: '';
 }
 
 @media only screen and (max-width:360px) {

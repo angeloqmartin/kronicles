@@ -148,9 +148,8 @@ function welcomeMessage(user) {
                 just share your experience with others of your favorite places.<br><br>Enjoy!</p>
             </div>
         </div>`
-        )
+    )
 }
-
 
 function welcomeLoggedInUser(loggedInUser) {
     $(".nav-sigin").hide()
@@ -297,8 +296,6 @@ function renderTrips() {
             <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
             </div>`)
     });
-
-
 }
 
 function deleteTripsReportBtn() {
