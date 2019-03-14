@@ -137,6 +137,21 @@ function loginCall(user) {
         })
 }
 
+function welcomeMessage(user) {
+    $("#js-tripReports-container").append(
+        `<div class="js-admin-contain-grid">
+            <h3 class="user-content-header">Welcome</h3>
+            <div class="js-admin-container">
+                <p class="js-container-content">Hello, ${user}<br><br>
+                Welcome to Kronicles where you can view posts from others and plan your next trip. 
+                Don’t see any post in your area yet… Be the first to make a suggestion or 
+                just share your experience with others of your favorite places.<br><br>Enjoy!</p>
+            </div>
+        </div>`
+        )
+}
+
+
 function welcomeLoggedInUser(loggedInUser) {
     $(".nav-sigin").hide()
     $(".js-user-welcome").append(
@@ -192,6 +207,7 @@ function resUser() {
                 } else {
                     loginCall(user);
                     welcomeLoggedInUser(user.username);
+                    welcomeMessage(user.username)
                 }
             })
     })
@@ -281,13 +297,7 @@ function renderTrips() {
             <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
             </div>`)
     });
-        // $("#js-tripReports-container").append(
-        //     `<div class="js-admin-contain-grid">
-        //     <h3 class="user-content-header">Test</h3>
-        //     <div class="js-admin-container">
-        //     <p class="js-container-content">Test</p>
-        //     </div>
-        //     </div>`)
+
 
 }
 
