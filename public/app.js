@@ -85,7 +85,7 @@ function closeRegisterForm() {
 }
 
 function useGuestAccount() {
-    const username = "guest"
+    const username = "anonymous"
     const password = "pa$$w0rd"
     $(".guest-login").on("click", function () {
         $("#username-input").val(username);
