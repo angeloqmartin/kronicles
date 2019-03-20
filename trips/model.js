@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+
 const tripReportSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -20,7 +21,13 @@ const tripReportSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    isPublished: Boolean
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        unique: false,
+        required: [true, 'No User id found']
+    },
+    isPublished: Boolean,
 })
 
 const TripReport = mongoose.model('TripReport', tripReportSchema);

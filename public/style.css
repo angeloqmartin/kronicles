@@ -368,6 +368,7 @@ header {
 
 .pos-trip-report-form {
     border-right: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
 }
 
 
@@ -485,6 +486,7 @@ i {
     margin: 0 10px 10px 10px;
     padding: 20px;
     box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
 }
 
 .js-trip-container::after {

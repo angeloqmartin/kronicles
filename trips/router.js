@@ -1,42 +1,54 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
+const passport = require('passport');
 
 const {
     TripReport
 } = require('./model');
 
-router.get("/", (req, res) => {
-    return TripReport.find()
+const jwtAuth = passport.authenticate('jwt', {
+    session: false
+});
+
+router.get("/", jwtAuth, (req, res) => {
+    return TripReport.find({})
+        .populate("userId")
         .then(trips => {
             res.json(trips);
         })
 })
 
-router.post("/", (req, res) => {
-    return TripReport.create(req.body)
-        .then(data => {
-            res.status(201).json(data)
+router.post("/", jwtAuth, (req, res) => {
+    const data = req.body;
+    data.userId = req.user.id;
+    return TripReport.create(data)
+        .then(newTrip => {
+            res.status(201).json(newTrip)
         })
 })
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", jwtAuth, (req, res) => {
     return TripReport.deleteOne({
-            "_id": req.params.id
+            "_id": req.params.id,
+            userId: req.user.id
         })
         .then(data => {
             res.json(data)
         })
 })
 
-router.put("/:id", (req, res) => {
-    return TripReport.update({
-            id: req.params.id,
-            title: req.body.title,
-            postalCode: req.body.postalCode,
-            content: req.body.content,
-            category: req.body.category
+router.put("/:id", jwtAuth, (req, res) => {
+    return TripReport.findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            $set: {
+                title: req.body.title,
+                postalCode: req.body.postalCode,
+                content: req.body.content,
+                category: req.body.category
+            }
         })
+
         .then(data => {
             res.json(data);
         })

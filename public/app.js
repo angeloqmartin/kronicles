@@ -20,17 +20,27 @@ function showElements() {
 };
 
 function hideErrModel() {
-    $(".err-modal").hide()
+    $(".err-modal").hide();
+    clearErrModal();
+}
+
+function hideErrOnWindowClick() {
+    $(window).click(function (e) {
+        hideErrModel();
+    })
 }
 
 function hideLandingPage() {
     $(".landing").hide();
 }
 
+function clearErrModal() {
+    $("#myModal").empty();
+}
+
 function closeErrMessage() {
     $(".close").on("click", function () {
         hideErrModel();
-        reloadPage();
     })
 }
 
@@ -102,7 +112,6 @@ function loginHandler() {
             password: $("#password-input").val()
         }
         loginCall(user);
-        welcomeLoggedInUser(loggedInUser)
     })
 }
 
@@ -119,10 +128,14 @@ function loginCall(user) {
             if (newUser.message) {
                 $(".login-section").append(newUser.message)
             } else {
-                localStorage.authToken = user.authToken;
+                localStorage.username = user.username;
+                localStorage.authToken = newUser.authToken;
+                welcomeLoggedInUser(user.username);
                 hideRegisterForm();
                 hideLandingPage();
                 showfindTripsPage();
+                getTrips()
+                history.pushState("", document.title, window.location.pathname);
             }
         })
         .catch(err => {
@@ -161,6 +174,7 @@ function welcomeLoggedInUser(loggedInUser) {
 
 function logOut() {
     $(".js-user-welcome").on("click", "button", function () {
+        localStorage.clear();
         reloadPage();
     })
 };
@@ -213,7 +227,7 @@ function resUser() {
 }
 
 function findTripReports() {
-    $(".pos-trip-report-form").on("click", function (e) {
+    $(".seach-trip-report").on("submit", function (e) {
         e.preventDefault();
         const category = $("#selected-categories").val();
         const location = $("#selected-location").val();
@@ -244,7 +258,7 @@ function submitTripForm() {
         if (id) {
             tripReport.id = id;
             fetch(`/trip-report/${id}`, {
-                    method: "put",
+                    method: "PUT",
                     body: JSON.stringify(tripReport),
                     headers: {
                         authorization: "bearer " + localStorage.authToken,
@@ -256,9 +270,10 @@ function submitTripForm() {
                 })
         } else {
             fetch("/trip-report", {
-                    method: "post",
+                    method: "POST",
                     body: JSON.stringify(tripReport),
                     headers: {
+                        authorization: "bearer " + localStorage.authToken,
                         "content-type": "application/json"
                     }
                 })
@@ -271,7 +286,13 @@ function submitTripForm() {
 }
 
 function getTrips() {
-    fetch("/trip-report")
+    fetch("/trip-report", {
+            method: "GET",
+            headers: {
+                authorization: "bearer " + localStorage.authToken,
+                "content-type": "application/json"
+            }
+        })
         .then(response => {
             return response.json();
         })
@@ -285,16 +306,20 @@ function getTrips() {
 function renderTrips() {
     $("#js-tripReports-container").empty();
     STORE.trips.forEach(element => {
+        let html = `<div class="js-user-contain-grid">
+        <h3 class="user-content-header">${element.title}</h3>
+        <div class="js-trip-container">
+            <p class="js-container-content">${element.content}</p>
+            <p class="js-container-category">${element.category}</p>
+        </div>`;
+        if (element.userId.username == localStorage.username) {
+            html = html + `<button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
+            <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>`
+        }
+        html = html + `</div>`
         $("#js-tripReports-container").append(
-            `<div class="js-user-contain-grid">
-            <h3 class="user-content-header">${element.title}</h3>
-            <div class="js-trip-container">
-                <p class="js-container-content">${element.content}</p>
-                <p class="js-container-category">${element.category}</p>
-            </div>
-            <button class="delete-trip-report-btn" data-id="${element._id}">Delete</button>
-            <button class="edit-trip-report-btn" data-id="${element._id}">Edit</button>
-            </div>`)
+            html
+        )
     });
 }
 
@@ -302,7 +327,11 @@ function deleteTripsReportBtn() {
     $("#js-tripReports-container").on("click", ".delete-trip-report-btn", function (event) {
         const id = $(event.target).data("id")
         fetch(`/trip-report/${id}`, {
-                method: "delete"
+                method: "DELETE",
+                headers: {
+                    authorization: "bearer " + localStorage.authToken,
+                    "content-type": "application/json"
+                },
             })
             .then(() => {
                 getTrips();
@@ -324,8 +353,17 @@ function editTripReportformBtn() {
     })
 }
 
+function getLoggedUserAuth() {
+    if (localStorage.authToken) {
+        welcomeLoggedInUser(localStorage.username);
+        hideRegisterForm();
+        hideLandingPage();
+        showfindTripsPage();
+    }
+}
 // on page load function should run
 $(function () {
+    getLoggedUserAuth();
     hiddenElements();
     showElements();
     getTrips();
@@ -337,4 +375,5 @@ $(function () {
     resUser();
     findTripReports();
     logOut();
+    hideErrOnWindowClick();
 });
